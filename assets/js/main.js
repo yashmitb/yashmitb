@@ -78,7 +78,7 @@ if (localData == "light") {
   icon.src = "./assets/img/moon.png";
   document.body.classList.remove("dark-theme");
 } else if (localData == "dark") {
-  icon.src = "../assets/img/sun.png";
+  icon.src = "./assets/img/sun.png";
   document.body.classList.add("dark-theme");
 }
 
