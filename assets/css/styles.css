@@ -689,6 +689,13 @@ img {
   /* margin-left: 100%; */
 }
 
+code {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: crimson;
+  padding: 2px;
+  font-size: 105%;
+}
+
 .the-element {
   display: block;
   position: fixed;
