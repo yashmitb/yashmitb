@@ -507,6 +507,11 @@ img {
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .skill__card::before {

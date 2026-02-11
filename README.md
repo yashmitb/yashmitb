@@ -8,25 +8,25 @@ Passionately leveraging machine learning and data analytics to solve real-world 
 
 ### 🚀 Projects
 
-#### [TritonSpend](https://github.com/yashmitb)
+#### [TritonSpend](https://github.com/CSES-Open-Source/TritonSpend)
 
 _Mobile-first personal finance app with automated transaction tracking._
 
 - **Tech:** React Native, TypeScript, Node.js, PostgreSQL
 
-#### [Croptimization](https://github.com/yashmitb)
+#### [Croptimization](https://github.com/yashmitb/croptimization)
 
 _ML-powered precision agriculture platform achieving 95% model accuracy._
 
 - **Tech:** TensorFlow, Pandas, Scikit-learn, NumPy
 
-#### [GestAR](https://github.com/yashmitb)
+#### [GestAR](https://github.com/yashmitb/GestAR_MLbackend)
 
 _AR gesture and ASL recognition system with sub-100ms latency._
 
 - **Tech:** Unity, C#, Arduino, Raspberry Pi
 
-#### [HungerHeroes](https://github.com/yashmitb)
+#### [HungerHeroes]
 
 _Connecting food donors with recipients to reduce local hunger._
 
