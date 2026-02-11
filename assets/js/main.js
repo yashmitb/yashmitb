@@ -56,20 +56,20 @@ const sr = ScrollReveal({
 
 sr.reveal(".home__data, .about__img, .skills__subtitle, .skills__text", {});
 sr.reveal(
-  ".home__img, .about__subtitle, .about__text, .skills__img, .container, img, .box, .dream ",
+  ".home__img, .about__subtitle, .about__text, .about__info, .skills__category",
   {
     delay: 400,
-  }
+  },
 );
 sr.reveal(".home__social-icon", { interval: 200 });
-sr.reveal(".skills__data, .work__img, .contact__input", { interval: 200 });
+sr.reveal(".skill__card, .project__card", { interval: 150 });
 
 /*==================== MAKE THEME TOGGLE ====================*/
 
 var icon = document.getElementById("icon");
 
 if (localStorage.getItem("theme") == null) {
-  localStorage.setItem("theme", "light");
+  localStorage.setItem("theme", "dark");
 }
 
 let localData = localStorage.getItem("theme");
@@ -130,5 +130,5 @@ document.body.addEventListener(
       }
     }
   },
-  true
+  true,
 );

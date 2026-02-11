@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="description" content="Yashmit Bhaverisetti - Data Science Student at UC San Diego specializing in Machine Learning and Data Analytics" />
+    
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- =====BOX ICONS===== -->
@@ -12,7 +13,7 @@
       rel="stylesheet"
     />
 
-    <title>Yashmit's Portfolio</title>
+    <title>Yashmit Bhaverisetti | Data Science Portfolio</title>
   </head>
   <body>
     
@@ -35,12 +36,9 @@
               <a href="#skills" class="nav__link">Skills</a>
             </li>
             <li class="nav__item">
-              <a href="#work" class="nav__link">Work</a>
+              <a href="#work" class="nav__link">Projects</a>
             </li>
-            <li class="nav__item">
-              <a href="#Gallery" class="nav__link">Gallery</a>
-            </li>
-            <img src="./assets/img/moon.png" alt="moon" id="icon">
+            <img src="./assets/img/moon.png" alt="theme toggle" id="icon">
           </ul>
         </div>
 
@@ -52,26 +50,29 @@
 
     <main class="l-main">
       <!--===== HOME =====-->
-
       <section class="home bd-grid" id="home">
         <div class="home__data">
           <h1 class="home__title">
             Hi,<br />I'm <span class="home__title-color">Yashmit</span><br />
-            Programmer
           </h1>
+          <p class="home__subtitle">Data Science Student @ UCSD</p>
 
-          <a href="#" class="button">Contact</a>
+          <a href="mailto:ybhaverisetti@ucsd.edu" class="button">Contact Me</a>
         </div>
 
         <div class="home__social">
-          <a onclick="window.open(
-            'https://www.figma.com/@yashmit', '_blank');" class="home__social-icon"
-            ><i class="bx bxl-figma"></i
-              ></a>
-              <a onclick="window.open(
-            'https://github.com/yashmitb', '_blank');" class="home__social-icon"><i class="bx bxl-github"></i></a>
-            <a onclick="window.open(
-              'https://devpost.com/yashmitb', '_blank');" class="home__social-icon"><i class="bx bx-code-alt"></i></a>
+          <a href="https://www.linkedin.com/in/yashmitb" target="_blank" class="home__social-icon">
+            <i class="bx bxl-linkedin"></i>
+          </a>
+          <a href="https://github.com/yashmitb" target="_blank" class="home__social-icon">
+            <i class="bx bxl-github"></i>
+          </a>
+          <a href="https://devpost.com/yashmitb" target="_blank" class="home__social-icon">
+            <i class="bx bx-code-alt"></i>
+          </a>
+          <a href="https://www.figma.com/@yashmit" target="_blank" class="home__social-icon">
+            <i class="bx bxl-figma"></i>
+          </a>
         </div>
 
         <div class="home__img">
@@ -92,9 +93,10 @@
               />
               <image
                 class="home__blob-img"
-                x="50"
-                y="60"
-                href="assets/img/perfil.png"
+                x="-40"
+                y="20"
+                style="transform: scale(1.8);"
+                xlink:href="assets/img/about_new_no_bg.png"
               />
             </g>
           </svg>
@@ -107,14 +109,36 @@
 
         <div class="about__container bd-grid">
           <div class="about__img">
-            <img src="assets/img/about.png" alt="" />
+            <img src="assets/img/about_new_no_bg.png" alt="Yashmit Bhaverisetti" />
           </div>
 
           <div>
-            <h2 class="about__subtitle">About me!</h2>
+            <h2 class="about__subtitle">I'm Yashmit</h2>
             <p class="about__text">
-              Hi, my name is Yashmit, I'm a student at Mountain House High. I have been a Programmer for <code>5+</code> years. I have experience in many languages and I'm a quick learner. I also took a Digital arts course and learned to make digital art for my apps and websites. I'm also a photographer and part of BSA. 
+              I'm a Data Science student at the University of California, San Diego, passionate about leveraging machine learning and data analytics to solve real-world problems. With experience in developing full-stack applications, conducting ML research, and building innovative solutions, I'm constantly exploring the intersection of technology and impact.
             </p>
+            <p class="about__text">
+              My journey spans from precision agriculture research achieving 95% model accuracy to building mobile-first finance apps and AR gesture recognition systems. I'm driven by curiosity and the desire to create meaningful technology.
+            </p>
+
+            <div class="about__info">
+              <div class="about__info-item">
+                <p class="about__info-title">University</p>
+                <p class="about__info-value">UC San Diego</p>
+              </div>
+              <div class="about__info-item">
+                <p class="about__info-title">Degree</p>
+                <p class="about__info-value">BS Data Science</p>
+              </div>
+              <div class="about__info-item">
+                <p class="about__info-title">GPA</p>
+                <p class="about__info-value">3.7/4.0</p>
+              </div>
+              <div class="about__info-item">
+                <p class="about__info-title">Graduation</p>
+                <p class="about__info-value">May 2028</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -125,157 +149,253 @@
 
         <div class="skills__container bd-grid">
           <div>
-            <h2 class="skills__subtitle">Professional Skills</h2>
+            <h2 class="skills__subtitle">Technical Expertise</h2>
             <p class="skills__text">
-              Find out about my programming skills and more! 
+              A comprehensive toolkit spanning machine learning, full-stack development, and data analytics.
             </p>
-            <div>
-              <div class="skills__data">
-                <div class="skills__names">
-                  <i class="bx bxl-html5 skills__icon"></i>
-                  <span class="skills__name">Web development</span>
+
+            <div class="skills__category">
+              <h3 class="skills__category-title">Languages</h3>
+              <div class="skills__grid">
+                <div class="skill__card">
+                  <i class="bx bxl-python skill__icon"></i>
+                  <span class="skill__name">Python</span>
                 </div>
-                <div class="skills__bar skills__web"></div>
-                <div>
-                  <span class="skills__percentage">95%</span>
+                <div class="skill__card">
+                  <i class="bx bx-data skill__icon"></i>
+                  <span class="skill__name">SQL</span>
                 </div>
-              </div>
-              <div class="skills__data">
-                <div class="skills__names">
-                  <i class="bx bxl-react skills__icon"></i>
-                  <span class="skills__name">React Native</span>
+                <div class="skill__card">
+                  <i class="bx bxl-javascript skill__icon"></i>
+                  <span class="skill__name">JavaScript</span>
                 </div>
-                <div class="skills__bar skills__react_native"></div>
-                <div>
-                  <span class="skills__percentage">85%</span>
+                <div class="skill__card">
+                  <i class="bx bx-code-alt skill__icon"></i>
+                  <span class="skill__name">TypeScript</span>
                 </div>
-              </div>
-              <div class="skills__data">
-                <div class="skills__names">
-                  <i class="bx bx-bulb skills__icon"></i>
-                  <span class="skills__name">Arduino</span>
+                <div class="skill__card">
+                  <i class="bx bxl-html5 skill__icon"></i>
+                  <span class="skill__name">HTML/CSS</span>
                 </div>
-                <div class="skills__bar skills__arduino"></div>
-                <div>
-                  <span class="skills__percentage">85%</span>
+                <div class="skill__card">
+                  <i class="bx bx-code-block skill__icon"></i>
+                  <span class="skill__name">C#</span>
                 </div>
-              </div>
-              <div class="skills__data">
-                <div class="skills__names">
-                  <i class="bx bxs-paint skills__icon"></i>
-                  <span class="skills__name">Digital Art</span>
+                <div class="skill__card">
+                  <i class="bx bxl-java skill__icon"></i>
+                  <span class="skill__name">Java</span>
                 </div>
-                <div class="skills__bar skills__digital_art"></div>
-                <div>
-                  <span class="skills__percentage">90%</span>
+                <div class="skill__card">
+                  <i class="bx bxl-apple skill__icon"></i>
+                  <span class="skill__name">Swift</span>
                 </div>
               </div>
             </div>
-          
-          <div class="skills__data">
-            <div class="skills__names">
-              <i class="bx bxs-camera skills__icon"></i>
-              <span class="skills__name">Photography</span>
+
+            <div class="skills__category">
+              <h3 class="skills__category-title">Frameworks & Libraries</h3>
+              <div class="skills__grid">
+                <div class="skill__card">
+                  <i class="bx bx-brain skill__icon"></i>
+                  <span class="skill__name">TensorFlow</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-table skill__icon"></i>
+                  <span class="skill__name">Pandas</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-scatter-chart skill__icon"></i>
+                  <span class="skill__name">Scikit-learn</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-chip skill__icon"></i>
+                  <span class="skill__name">PyTorch</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bxl-react skill__icon"></i>
+                  <span class="skill__name">React Native</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bxl-nodejs skill__icon"></i>
+                  <span class="skill__name">Node.js</span>
+                </div>
+              </div>
             </div>
-            <div class="skills__bar skills__photography"></div>
-            <div>
-              <span class="skills__percentage">90%</span>
+
+            <div class="skills__category">
+              <h3 class="skills__category-title">Tools & Platforms</h3>
+              <div class="skills__grid">
+                <div class="skill__card">
+                  <i class="bx bxl-git skill__icon"></i>
+                  <span class="skill__name">Git</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bxl-firebase skill__icon"></i>
+                  <span class="skill__name">Firebase</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bxl-postgresql skill__icon"></i>
+                  <span class="skill__name">PostgreSQL</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bxl-docker skill__icon"></i>
+                  <span class="skill__name">Docker</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bxl-aws skill__icon"></i>
+                  <span class="skill__name">AWS</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-code-curly skill__icon"></i>
+                  <span class="skill__name">VS Code</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-book-content skill__icon"></i>
+                  <span class="skill__name">Jupyter</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skills__category">
+              <h3 class="skills__category-title">Hardware</h3>
+              <div class="skills__grid">
+                <div class="skill__card">
+                  <i class="bx bx-chip skill__icon"></i>
+                  <span class="skill__name">Raspberry Pi</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-bulb skill__icon"></i>
+                  <span class="skill__name">Arduino</span>
+                </div>
+                <div class="skill__card">
+                  <i class="bx bx-bot skill__icon"></i>
+                  <span class="skill__name">VEX Robotics</span>
+                </div>
+              </div>
             </div>
           </div>
-            </div>
-            <div>
-              <img src="assets/img/pro.png" alt="" class="skills__img" />
-            </div>
-          </div>
-
-
-          </div>
-
-          
-      </section>
-
-      <!--===== WORK =====-->
-      <section class="work section" id="work">
-        <h2 class="section-title">Work</h2>
-
-        <div class="work__container bd-grid">
-          <a href="#Gallery" class="work__img">
-            <img src="assets/img/worktile1.png" alt="" />
-          </a>
-          <a onclick="window.open(
-            'https://yashmitb.github.io/Projects/', '_blank');" class="work__img">
-            <img src="assets/img/projects.png" alt="" />
-          </a>
-          <a onclick="window.open(
-            'https://yashmitbhaverisetti.weebly.com/', '_blank');" class="work__img">
-            <img src="assets/img/digital.png" alt="" />
-          </a>
-          <!-- <a href="" class="work__img">
-            <img src="assets/img/soon.png" alt="" />
-          </a>
-          <a href="" class="work__img">
-            <img src="assets/img/soon.png" alt="" />
-          </a>
-          <a href="" class="work__img">
-            <img src="assets/img/soon.png" alt="" />
-          </a> -->
         </div>
       </section>
 
-      <!--===== Gallery =====-->
-      <section class="Gallery section" id="Gallery">
-        <h2 class="section-title">Gallery</h2>
+      <!--===== PROJECTS =====-->
+      <section class="work section" id="work">
+        <h2 class="section-title">Projects</h2>
 
-        <body>
-          <div class="container">
-            
-            <div class="box">
-              <div class="dream">
-                <img src="assets/img/cherry.jpg" />
-                <img src="assets/img/dewRose.jpg" />
-                <img src="assets/img/dewrose2.jpg" />
-                <img src="assets/img/field.jpg" />
-                <img src="assets/img/hotcoal.JPG" />
+        <div class="work__container bd-grid">
+          <!-- TritonSpend -->
+          <div class="project__card">
+            <img src="assets/img/OpenSourceLogo.webp" alt="TritonSpend" class="project__img" />
+            <div class="project__content">
+              <h3 class="project__title">TritonSpend</h3>
+              <p class="project__description">
+                Mobile-first personal finance app with interactive spending visualizations and automated transaction tracking. Built REST APIs and PostgreSQL schemas with automated triggers.
+              </p>
+              <div class="project__tech">
+                <span class="tech__badge">React Native</span>
+                <span class="tech__badge">TypeScript</span>
+                <span class="tech__badge">Node.js</span>
+                <span class="tech__badge">PostgreSQL</span>
               </div>
-      
-              <div class="dream">
-                <img src="assets/img/lakeview.jpg" />
-                <img src="assets/img/lakeview2.jpg" />
-                <img src="assets/img/moonme.jpg" />
-                <img src="assets/img/mountainview.jpg" />
-                <img src="assets/img/purpleflower.jpg" />
-              </div>
-      
-              <div class="dream">
-                <img src="assets/img/purpleflower2.jpg" />
-                <img src="assets/img/purplelupine.png" />
-                <img src="assets/img/purplesunsettree.JPG" />
-                <img src="assets/img/sunsetmountain.jpg" />
-                <img src="assets/img/sunsetParkingLot.JPG" />
-              </div>
+              <a href="https://github.com/yashmitb" target="_blank" class="project__link">
+                View Project <i class="bx bx-right-arrow-alt"></i>
+              </a>
             </div>
           </div>
 
+          <!-- Croptimization -->
+          <div class="project__card">
+            <img src="assets/img/croplogo.jpg" alt="Croptimization" class="project__img" />
+            <div class="project__content">
+              <h3 class="project__title">Croptimization</h3>
+              <p class="project__description">
+                ML-powered precision agriculture platform achieving 95% model accuracy. Analyzed 100K+ data points for crop yield forecasting and soil-based resource optimization.
+              </p>
+              <div class="project__tech">
+                <span class="tech__badge">TensorFlow</span>
+                <span class="tech__badge">Pandas</span>
+                <span class="tech__badge">Scikit-learn</span>
+                <span class="tech__badge">NumPy</span>
+              </div>
+              <a href="https://github.com/yashmitb" target="_blank" class="project__link">
+                View Research <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- GestAR -->
+          <div class="project__card">
+            <img src="assets/img/gestar.png" alt="GestAR" class="project__img" />
+            <div class="project__content">
+              <h3 class="project__title">GestAR</h3>
+              <p class="project__description">
+                AR-inspired gesture and ASL recognition system with sub-100ms latency. Combines computer vision with embedded systems for real-time gesture interpretation.
+              </p>
+              <div class="project__tech">
+                <span class="tech__badge">Unity</span>
+                <span class="tech__badge">C#</span>
+                <span class="tech__badge">Arduino</span>
+                <span class="tech__badge">Raspberry Pi</span>
+              </div>
+              <a href="https://github.com/yashmitb" target="_blank" class="project__link">
+                Learn More <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- HungerHeroes -->
+          <div class="project__card">
+            <img src="assets/img/foodtrash.jpg" alt="HungerHeroes" class="project__img" />
+            <div class="project__content">
+              <h3 class="project__title">HungerHeroes</h3>
+              <p class="project__description">
+                Web platform connecting food donors with recipients to reduce local hunger and food waste. Co-authored research on food redistribution systems.
+              </p>
+              <div class="project__tech">
+                <span class="tech__badge">JavaScript</span>
+                <span class="tech__badge">HTML/CSS</span>
+                <span class="tech__badge">Firebase</span>
+              </div>
+              <a href="https://github.com/yashmitb" target="_blank" class="project__link">
+                View Project <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <!--===== FOOTER =====-->
     <footer class="footer">
-      <p class="footer__title">Yashmit</p>
-      <div class="footer__social">
-        <a onclick="window.open(
-          'https://github.com/yashmitb', '_blank');" class="footer__icon"><i class="bx bxl-github"></i></a>
-        <a onclick="window.open(
-          'https://www.instagram.com/yashmit.bhaverisetti/', '_blank');" class="footer__icon"><i class="bx bxl-instagram"></i></a>
-        <a onclick="window.open(
-          'https://replit.com/@Yoshiii', '_blank');" class="footer__icon"><i class="bx bx-code-alt"></i></a>
+      <p class="footer__title">Yashmit Bhaverisetti</p>
+      
+      <div class="footer__contact">
+        <a href="mailto:ybhaverisetti@ucsd.edu" class="footer__email">ybhaverisetti@ucsd.edu</a>
       </div>
-      <p class="footer__copy">&#169; Yashmit. All rights reserved</p>
-    </footer>
-    <div class="the-element ">
-      <h2 id="asd"> Press 'Enter' To Auto-Scroll</h2>
-    </div>
 
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/yashmitb" target="_blank" class="footer__icon">
+          <i class="bx bxl-linkedin"></i>
+        </a>
+        <a href="https://github.com/yashmitb" target="_blank" class="footer__icon">
+          <i class="bx bxl-github"></i>
+        </a>
+        <a href="https://devpost.com/yashmitb" target="_blank" class="footer__icon">
+          <i class="bx bx-code-alt"></i>
+        </a>
+        <a href="https://www.instagram.com/yashmit.bhaverisetti/" target="_blank" class="footer__icon">
+          <i class="bx bxl-instagram"></i>
+        </a>
+        <a href="https://replit.com/@Yoshiii" target="_blank" class="footer__icon">
+          <i class="bx bx-code-alt"></i>
+        </a>
+      </div>
+      
+      <p class="footer__copy">&#169; 2026 Yashmit Bhaverisetti. All rights reserved</p>
+    </footer>
+
+    <div class="the-element">
+      <h2 id="asd">Press 'Enter' To Auto-Scroll</h2>
+    </div>
 
     <!--===== SCROLL REVEAL =====-->
     <script src="https://unpkg.com/scrollreveal"></script>
