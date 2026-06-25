@@ -47,19 +47,28 @@
   /* ---------- Mobile menu ---------- */
   const burger = document.getElementById("burger");
   const navList = document.getElementById("nav-list");
+  const scrim = document.getElementById("nav-scrim");
   if (burger && navList) {
     const burgerIcon = burger.querySelector("i");
-    const closeMenu = function () {
-      navList.classList.remove("show");
-      if (burgerIcon) burgerIcon.className = "bx bx-menu";
+    const setMenu = function (open) {
+      navList.classList.toggle("show", open);
+      if (scrim) scrim.classList.toggle("show", open);
+      document.body.classList.toggle("menu-open", open);
+      if (burgerIcon) burgerIcon.className = open ? "bx bx-x" : "bx bx-menu";
     };
     burger.addEventListener("click", function () {
-      const open = navList.classList.toggle("show");
-      if (burgerIcon) burgerIcon.className = open ? "bx bx-x" : "bx bx-menu";
+      setMenu(!navList.classList.contains("show"));
     });
     navList.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", closeMenu);
+      a.addEventListener("click", function () {
+        setMenu(false);
+      });
     });
+    if (scrim) {
+      scrim.addEventListener("click", function () {
+        setMenu(false);
+      });
+    }
   }
 
   /* ---------- Nav scrolled state + scroll progress ---------- */

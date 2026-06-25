@@ -45,6 +45,8 @@
 
   --cover-bg: linear-gradient(150deg, #1c1c20, #0c0c0e);
   --mono-faint: rgba(255, 255, 255, 0.05);
+  --menu-bg: rgba(10, 10, 13, 0.94);
+  --scrim: rgba(0, 0, 0, 0.5);
 
   --blob-1: rgba(255, 255, 255, 0.05);
   --blob-2: rgba(255, 255, 255, 0.035);
@@ -70,6 +72,8 @@ body.light-theme {
 
   --cover-bg: linear-gradient(150deg, #e7e7ea, #d3d3d7);
   --mono-faint: rgba(11, 11, 13, 0.06);
+  --menu-bg: rgba(244, 244, 245, 0.96);
+  --scrim: rgba(40, 40, 50, 0.35);
 
   --blob-1: rgba(0, 0, 0, 0.04);
   --blob-2: rgba(0, 0, 0, 0.03);
@@ -381,6 +385,26 @@ body.light-theme .bg-orbs::after {
 .nav__cta,
 .nav__burger {
   cursor: pointer;
+}
+
+/* Mobile menu scrim */
+.nav-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--scrim);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), visibility 0.35s;
+}
+.nav-scrim.show {
+  opacity: 1;
+  visibility: visible;
+}
+body.menu-open {
+  overflow: hidden;
 }
 .nav__logo {
   font-weight: 800;
@@ -759,6 +783,90 @@ body.light-theme .bg-orbs::after {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 18%;
+}
+
+/* About terminal card */
+.term {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  will-change: transform;
+}
+.term__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--stroke-soft);
+  background: var(--glass-2);
+}
+.term__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  opacity: 0.6;
+}
+.term__name {
+  margin-left: auto;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+    monospace;
+}
+.term__body {
+  margin: 0;
+  padding: 1.5rem 1.6rem 1.7rem;
+  overflow-x: auto;
+}
+.term__body code {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+    monospace;
+  font-size: clamp(0.82rem, 1.4vw, 0.98rem);
+  line-height: 1.85;
+  color: var(--text);
+  white-space: pre;
+}
+/* monochrome "syntax" — distinguished by weight / opacity, not hue */
+.term__body .k {
+  font-weight: 700;
+  color: var(--text);
+}
+.term__body .fn {
+  font-weight: 600;
+  color: var(--text);
+}
+.term__body .s {
+  color: var(--text-soft);
+}
+.term__body .o {
+  color: var(--text-faint);
+}
+.term__body .b {
+  font-weight: 600;
+  color: var(--text);
+}
+.term__body .c {
+  color: var(--text-faint);
+}
+.term__body .cm {
+  color: var(--text-faint);
+  font-style: italic;
+}
+.term__body .cur {
+  display: inline-block;
+  width: 9px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--text);
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 .about__lead {
   font-size: clamp(1.15rem, 2.2vw, 1.5rem);
@@ -1320,11 +1428,12 @@ body.light-theme .bg-orbs::after {
     width: min(100% - 2rem, 320px);
     padding: 0.8rem;
     border-radius: var(--radius-lg);
-    background: var(--glass-2);
+    background: var(--menu-bg);
     border: 1px solid var(--stroke);
-    -webkit-backdrop-filter: blur(26px) saturate(120%);
-    backdrop-filter: blur(26px) saturate(120%);
+    -webkit-backdrop-filter: blur(26px) saturate(140%);
+    backdrop-filter: blur(26px) saturate(140%);
     box-shadow: var(--shadow);
+    z-index: 5;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s var(--ease), transform 0.4s var(--ease),
@@ -1345,6 +1454,10 @@ body.light-theme .bg-orbs::after {
   }
   .nav__burger {
     display: grid;
+  }
+  /* floating badges crowd the hero on phones — hide them */
+  .portrait__badge {
+    display: none;
   }
 }
 
