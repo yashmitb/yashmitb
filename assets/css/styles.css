@@ -758,7 +758,7 @@ body.light-theme .bg-orbs::after {
   border-radius: var(--radius-lg);
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 18%;
 }
 .about__lead {
   font-size: clamp(1.15rem, 2.2vw, 1.5rem);
