@@ -3,11 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Yashmit Bhaverisetti - Data Science Student at UC San Diego specializing in Machine Learning and Data Analytics" />
-    
+    <meta
+      name="description"
+      content="Yashmit Bhaverisetti — Data Science student at UC San Diego building ML systems, full-stack apps, and shipped products. Creator of GradeHQ and Cut."
+    />
+    <meta name="author" content="Yashmit Bhaverisetti" />
+    <meta name="theme-color" content="#06070d" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Yashmit Bhaverisetti | Data Science Portfolio" />
+    <meta
+      property="og:description"
+      content="ML systems, full-stack apps, and shipped products from a UC San Diego Data Science student."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="preview.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- =====BOX ICONS===== -->
+    <!-- Box Icons -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -15,390 +31,877 @@
 
     <title>Yashmit Bhaverisetti | Data Science Portfolio</title>
   </head>
-  <body>
-    
-    <!--===== HEADER =====-->
-    <header class="l-header">
-      <nav class="nav bd-grid">
-        <div>
-          <a href="#" class="nav__logo">Yashmit</a>
-        </div>
+  <body class="dark-theme">
+    <!-- Atmosphere -->
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb--1"></span>
+      <span class="orb orb--2"></span>
+      <span class="orb orb--3"></span>
+    </div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
 
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active">Home</a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">About</a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">Skills</a>
-            </li>
-            <li class="nav__item">
-              <a href="#work" class="nav__link">Projects</a>
-            </li>
-            <img src="./assets/img/moon.png" alt="theme toggle" id="icon">
-          </ul>
-        </div>
+    <!--===== NAV =====-->
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav__logo"><span class="dot"></span>Yashmit</a>
 
-        <div class="nav__toggle" id="nav-toggle">
+      <ul class="nav__list" id="nav-list">
+        <li><a href="#home" class="nav__link active">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#experience" class="nav__link">Experience</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#leadership" class="nav__link">Leadership</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+          <i class="bx bx-moon"></i>
+        </button>
+        <a href="#contact" class="btn btn--primary nav__cta">Get in touch</a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu">
           <i class="bx bx-menu"></i>
-        </div>
-      </nav>
-    </header>
+        </button>
+      </div>
+    </nav>
 
-    <main class="l-main">
-      <!--===== HOME =====-->
-      <section class="home bd-grid" id="home">
-        <div class="home__data">
-          <h1 class="home__title">
-            Hi,<br />I'm <span class="home__title-color">Yashmit</span><br />
+    <main>
+      <!--===== HERO =====-->
+      <header class="hero wrap" id="home">
+        <div class="hero__copy">
+          <span class="eyebrow hero__avail reveal">
+            <span class="pulse"></span> Open to Summer 2026 internships
+          </span>
+
+          <h1 class="hero__title reveal" style="--d: 60ms">
+            <span>Hi, I'm</span>
+            <span class="grad-text">Yashmit.</span>
           </h1>
-          <p class="home__subtitle">Data Science Student @ UCSD</p>
 
-          <a href="mailto:ybhaverisetti@ucsd.edu" class="button">Contact Me</a>
+          <p class="hero__role reveal" style="--d: 140ms">
+            <b>Data Science</b> student @ UC San Diego — building
+            <b>ML systems</b> &amp; products people actually use.
+          </p>
+
+          <p class="hero__desc reveal" style="--d: 200ms">
+            I turn data into things that ship: from 95%-accuracy precision-ag
+            models to live web apps like GradeHQ and Cut. I love the spot where
+            machine learning meets clean, fast product design.
+          </p>
+
+          <div class="hero__chips reveal" style="--d: 260ms">
+            <span class="chip"><i class="bx bx-brain"></i> Machine Learning</span>
+            <span class="chip"><i class="bx bx-code-alt"></i> Full-Stack</span>
+            <span class="chip"><i class="bx bx-bar-chart-alt-2"></i> Data Viz</span>
+          </div>
+
+          <div class="hero__actions reveal" style="--d: 320ms">
+            <a href="#projects" class="btn btn--primary">
+              <i class="bx bx-rocket"></i> View my work
+            </a>
+            <a
+              href="Yashmit_s_College_Resume.pdf"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--ghost"
+            >
+              <i class="bx bx-download"></i> Resume
+            </a>
+          </div>
+
+          <div class="hero__social reveal" style="--d: 380ms">
+            <a
+              href="https://www.linkedin.com/in/yashmitb"
+              target="_blank"
+              rel="noopener"
+              class="social-icon"
+              aria-label="LinkedIn"
+            ><i class="bx bxl-linkedin"></i></a>
+            <a
+              href="https://github.com/yashmitb"
+              target="_blank"
+              rel="noopener"
+              class="social-icon"
+              aria-label="GitHub"
+            ><i class="bx bxl-github"></i></a>
+            <a
+              href="https://devpost.com/yashmitb"
+              target="_blank"
+              rel="noopener"
+              class="social-icon"
+              aria-label="Devpost"
+            ><i class="bx bx-code-block"></i></a>
+            <a
+              href="https://www.figma.com/@yashmit"
+              target="_blank"
+              rel="noopener"
+              class="social-icon"
+              aria-label="Figma"
+            ><i class="bx bxl-figma"></i></a>
+            <a
+              href="mailto:ybhaverisetti@ucsd.edu"
+              class="social-icon"
+              aria-label="Email"
+            ><i class="bx bx-envelope"></i></a>
+          </div>
         </div>
 
-        <div class="home__social">
-          <a href="https://www.linkedin.com/in/yashmitb" target="_blank" class="home__social-icon">
-            <i class="bx bxl-linkedin"></i>
-          </a>
-          <a href="https://github.com/yashmitb" target="_blank" class="home__social-icon">
-            <i class="bx bxl-github"></i>
-          </a>
-          <a href="https://devpost.com/yashmitb" target="_blank" class="home__social-icon">
-            <i class="bx bx-code-alt"></i>
-          </a>
-          <a href="https://www.figma.com/@yashmit" target="_blank" class="home__social-icon">
-            <i class="bx bxl-figma"></i>
-          </a>
+        <div class="hero__media reveal" style="--d: 200ms">
+          <div class="portrait" data-tilt>
+            <span class="portrait__ring"></span>
+            <div class="portrait__glass">
+              <img
+                src="assets/img/about_new_no_bg.png"
+                alt="Portrait of Yashmit Bhaverisetti"
+              />
+            </div>
+            <div class="portrait__badge portrait__badge--1">
+              <i class="bx bx-bullseye"></i>
+              <span>95% Accuracy<small>ML research model</small></span>
+            </div>
+            <div class="portrait__badge portrait__badge--2">
+              <i class="bx bx-trophy"></i>
+              <span>State Champions<small>VEX Robotics → Worlds</small></span>
+            </div>
+          </div>
         </div>
 
-        <div class="home__img">
-          <svg
-            class="home__blob"
-            viewBox="0 0 479 467"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-          >
-            <mask id="mask0" mask-type="alpha">
-              <path
-                d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
-              />
-            </mask>
-            <g mask="url(#mask0)">
-              <path
-                d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
-              />
-              <image
-                class="home__blob-img"
-                x="-30"
-                y="20"
-                style="transform: scale(1.8);"
-                xlink:href="assets/img/about_new_no_bg.png"
-              />
-            </g>
-          </svg>
+        <div class="scroll-cue" aria-hidden="true">
+          <span class="mouse"></span>
+          Scroll
+        </div>
+      </header>
+
+      <!--===== STATS =====-->
+      <section class="wrap" aria-label="Highlights" style="padding-top: 0">
+        <div class="stats glass reveal">
+          <div class="stat">
+            <div class="stat__num grad-text" data-count="3.7" data-decimals="1">3.7</div>
+            <div class="stat__label">GPA at UC San Diego</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num grad-text" data-count="8" data-suffix="+">8+</div>
+            <div class="stat__label">Projects shipped</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num grad-text" data-count="95" data-suffix="%">95%</div>
+            <div class="stat__label">ML model accuracy</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num grad-text" data-count="2" data-suffix=" live">2 live</div>
+            <div class="stat__label">Apps in production</div>
+          </div>
         </div>
       </section>
 
       <!--===== ABOUT =====-->
-      <section class="about section" id="about">
-        <h2 class="section-title">About</h2>
-
-        <div class="about__container bd-grid">
-          <div class="about__img">
+      <section class="section wrap" id="about">
+        <div class="about__grid">
+          <div class="about__photo glass reveal">
             <img src="assets/img/about_new_no_bg.png" alt="Yashmit Bhaverisetti" />
           </div>
 
-          <div>
-            <h2 class="about__subtitle">I'm Yashmit</h2>
-            <p class="about__text">
-              I'm a Data Science student at the University of California, San Diego, passionate about leveraging machine learning and data analytics to solve real-world problems. With experience in developing full-stack applications, conducting ML research, and building innovative solutions, I'm constantly exploring the intersection of technology and impact.
+          <div class="reveal" style="--d: 120ms">
+            <span class="eyebrow"><i class="bx bx-user"></i> About me</span>
+            <p class="about__lead" style="margin-top: 1.1rem">
+              I'm a Data Science student who likes shipping, not just analyzing.
             </p>
             <p class="about__text">
-              My journey spans from precision agriculture research achieving 95% model accuracy to building mobile-first finance apps and AR gesture recognition systems. I'm driven by curiosity and the desire to create meaningful technology.
+              At UC San Diego I focus on machine learning and data
+              visualization, but my favorite work happens when a model leaves
+              the notebook and becomes something real — a mobile app, a research
+              paper, a live website. I've taken projects from raw data all the
+              way to the App Store and production web.
+            </p>
+            <p class="about__text">
+              That path runs from precision-agriculture research hitting 95%
+              accuracy, to a personal-finance app for fellow Tritons, to an AR
+              gesture-recognition system with sub-100ms latency. Outside of code,
+              I'm an Eagle Scout who led a robotics team to the world
+              championship and ran two student clubs.
             </p>
 
-            <div class="about__info">
-              <div class="about__info-item">
-                <p class="about__info-title">University</p>
-                <p class="about__info-value">UC San Diego</p>
+            <div class="about__facts">
+              <div class="fact">
+                <div class="fact__k">University</div>
+                <div class="fact__v">UC San Diego</div>
               </div>
-              <div class="about__info-item">
-                <p class="about__info-title">Degree</p>
-                <p class="about__info-value">BS Data Science</p>
+              <div class="fact">
+                <div class="fact__k">Degree</div>
+                <div class="fact__v">B.S. Data Science</div>
               </div>
-              <div class="about__info-item">
-                <p class="about__info-title">GPA</p>
-                <p class="about__info-value">3.7/4.0</p>
+              <div class="fact">
+                <div class="fact__k">Focus</div>
+                <div class="fact__v">ML · Data Viz</div>
               </div>
-              <div class="about__info-item">
-                <p class="about__info-title">Graduation</p>
-                <p class="about__info-value">May 2028</p>
+              <div class="fact">
+                <div class="fact__k">Graduation</div>
+                <div class="fact__v">May 2028</div>
+              </div>
+              <div class="fact">
+                <div class="fact__k">Location</div>
+                <div class="fact__v">La Jolla, CA</div>
+              </div>
+              <div class="fact">
+                <div class="fact__k">Status</div>
+                <div class="fact__v">Open to internships</div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!--===== EXPERIENCE =====-->
+      <section class="section wrap" id="experience">
+        <div class="section__head reveal">
+          <span class="eyebrow"><i class="bx bx-briefcase"></i> Experience</span>
+          <h2 class="section__title">Where I've made an impact</h2>
+          <p class="section__sub">
+            Research, open source, and real products — selected roles where the
+            work shipped and the numbers moved.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="tl glass reveal">
+            <div class="tl__when">
+              Sept 2025 — Present
+              <span class="role">Open Source Developer</span>
+            </div>
+            <div>
+              <h3 class="tl__org"><i class="bx bx-git-branch"></i> UCSD CSES</h3>
+              <p class="tl__place">La Jolla, CA</p>
+              <ul class="tl__points">
+                <li>
+                  Built <b>TritonSpend</b>, a mobile-first personal finance app in
+                  React Native &amp; TypeScript for budgeting, expense tracking,
+                  goals, and AI insights.
+                </li>
+                <li>
+                  Developed a Node.js + PostgreSQL backend — REST APIs, schemas,
+                  and triggers for automated transaction handling.
+                </li>
+                <li>
+                  Created interactive spending &amp; goal visualizations with
+                  React Native SVG; collaborated through open-source code reviews.
+                </li>
+              </ul>
+              <div class="tl__tags">
+                <span class="tag">React Native</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PostgreSQL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tl glass reveal">
+            <div class="tl__when">
+              May 2023 — Apr 2024
+              <span class="role">Lead Researcher</span>
+            </div>
+            <div>
+              <h3 class="tl__org"><i class="bx bx-leaf"></i> Croptimization</h3>
+              <p class="tl__place">Remote</p>
+              <ul class="tl__points">
+                <li>
+                  Authored an ML research paper on AI-driven precision
+                  agriculture, achieving <b>95% model accuracy</b>.
+                </li>
+                <li>
+                  Analyzed <b>100K+</b> real-time weather and soil data points
+                  using TensorFlow, Pandas, NumPy, and Scikit-learn.
+                </li>
+                <li>
+                  Built models for crop-yield forecasting and soil-based
+                  recommendations to optimize resource allocation.
+                </li>
+              </ul>
+              <div class="tl__tags">
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">NumPy</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tl glass reveal">
+            <div class="tl__when">
+              Oct 2022 — Dec 2022
+              <span class="role">HungerHeroes Research Lead</span>
+            </div>
+            <div>
+              <h3 class="tl__org"><i class="bx bx-bowl-hot"></i> Global Education Destinations</h3>
+              <p class="tl__place">Egypt</p>
+              <ul class="tl__points">
+                <li>
+                  Co-authored an international research paper tackling food waste
+                  and hunger through data analysis and field research.
+                </li>
+                <li>
+                  Built a food-redistribution website connecting donors with
+                  recipients to cut local food waste.
+                </li>
+              </ul>
+              <div class="tl__tags">
+                <span class="tag">Data Analysis</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Research</span>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
       <!--===== SKILLS =====-->
-      <section class="skills section" id="skills">
-        <h2 class="section-title">Skills</h2>
+      <section class="section wrap" id="skills">
+        <div class="section__head reveal">
+          <span class="eyebrow"><i class="bx bx-wrench"></i> Toolkit</span>
+          <h2 class="section__title">Skills &amp; technologies</h2>
+          <p class="section__sub">
+            A stack that spans machine learning, full-stack engineering, and the
+            hardware where bits meet the real world.
+          </p>
+        </div>
 
-        <div class="skills__container bd-grid">
-          <div>
-            <h2 class="skills__subtitle">Technical Expertise</h2>
-            <p class="skills__text">
-              A comprehensive toolkit spanning machine learning, full-stack development, and data analytics.
-            </p>
-
-            <div class="skills__category">
-              <h3 class="skills__category-title">Languages</h3>
-              <div class="skills__grid">
-                <div class="skill__card">
-                  <i class="bx bxl-python skill__icon"></i>
-                  <span class="skill__name">Python</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-data skill__icon"></i>
-                  <span class="skill__name">SQL</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-javascript skill__icon"></i>
-                  <span class="skill__name">JavaScript</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-typescript skill__icon"></i>
-                  <span class="skill__name">TypeScript</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-html5 skill__icon"></i>
-                  <span class="skill__name">HTML/CSS</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-c-plus-plus skill__icon"></i>
-                  <span class="skill__name">C#</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-java skill__icon"></i>
-                  <span class="skill__name">Java</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-apple skill__icon"></i>
-                  <span class="skill__name">Swift</span>
-                </div>
-              </div>
+        <div class="skills__grid">
+          <article class="skillcat glass reveal">
+            <div class="skillcat__head">
+              <div class="skillcat__icon"><i class="bx bx-code-alt"></i></div>
+              <h3 class="skillcat__title">Languages</h3>
             </div>
-
-            <div class="skills__category">
-              <h3 class="skills__category-title">Frameworks & Libraries</h3>
-              <div class="skills__grid">
-                <div class="skill__card">
-                  <i class="bx bx-brain skill__icon"></i>
-                  <span class="skill__name">TensorFlow</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-table skill__icon"></i>
-                  <span class="skill__name">Pandas</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-scatter-chart skill__icon"></i>
-                  <span class="skill__name">Scikit-learn</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-network-chart skill__icon"></i>
-                  <span class="skill__name">PyTorch</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-react skill__icon"></i>
-                  <span class="skill__name">React Native</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-nodejs skill__icon"></i>
-                  <span class="skill__name">Node.js</span>
-                </div>
-              </div>
+            <div class="skill-chips">
+              <span class="skill"><i class="bx bxl-python"></i> Python</span>
+              <span class="skill"><i class="bx bx-data"></i> SQL</span>
+              <span class="skill"><i class="bx bxl-javascript"></i> JavaScript</span>
+              <span class="skill"><i class="bx bxl-typescript"></i> TypeScript</span>
+              <span class="skill"><i class="bx bxl-java"></i> Java</span>
+              <span class="skill"><i class="bx bxl-html5"></i> HTML / CSS</span>
+              <span class="skill"><i class="bx bxl-c-plus-plus"></i> C#</span>
             </div>
+          </article>
 
-            <div class="skills__category">
-              <h3 class="skills__category-title">Tools & Platforms</h3>
-              <div class="skills__grid">
-                <div class="skill__card">
-                  <i class="bx bxl-git skill__icon"></i>
-                  <span class="skill__name">Git</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-firebase skill__icon"></i>
-                  <span class="skill__name">Firebase</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-postgresql skill__icon"></i>
-                  <span class="skill__name">PostgreSQL</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-docker skill__icon"></i>
-                  <span class="skill__name">Docker</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-aws skill__icon"></i>
-                  <span class="skill__name">AWS</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bxl-visual-studio skill__icon"></i>
-                  <span class="skill__name">VS Code</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-book-content skill__icon"></i>
-                  <span class="skill__name">Jupyter</span>
-                </div>
-              </div>
+          <article class="skillcat glass reveal" style="--d: 80ms">
+            <div class="skillcat__head">
+              <div class="skillcat__icon"><i class="bx bx-cube-alt"></i></div>
+              <h3 class="skillcat__title">Frameworks &amp; ML</h3>
             </div>
+            <div class="skill-chips">
+              <span class="skill"><i class="bx bx-brain"></i> TensorFlow</span>
+              <span class="skill"><i class="bx bx-network-chart"></i> PyTorch</span>
+              <span class="skill"><i class="bx bx-table"></i> Pandas</span>
+              <span class="skill"><i class="bx bx-scatter-chart"></i> Scikit-learn</span>
+              <span class="skill"><i class="bx bxl-react"></i> React</span>
+              <span class="skill"><i class="bx bxl-react"></i> React Native</span>
+              <span class="skill"><i class="bx bxl-nodejs"></i> Node.js</span>
+              <span class="skill"><i class="bx bx-server"></i> Express</span>
+            </div>
+          </article>
 
-            <div class="skills__category">
-              <h3 class="skills__category-title">Hardware</h3>
-              <div class="skills__grid">
-                <div class="skill__card">
-                  <i class="bx bx-chip skill__icon"></i>
-                  <span class="skill__name">Raspberry Pi</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-chip skill__icon"></i>
-                  <span class="skill__name">Arduino</span>
-                </div>
-                <div class="skill__card">
-                  <i class="bx bx-bot skill__icon"></i>
-                  <span class="skill__name">VEX Robotics</span>
-                </div>
-              </div>
+          <article class="skillcat glass reveal" style="--d: 120ms">
+            <div class="skillcat__head">
+              <div class="skillcat__icon"><i class="bx bx-terminal"></i></div>
+              <h3 class="skillcat__title">Tools &amp; Platforms</h3>
             </div>
-          </div>
+            <div class="skill-chips">
+              <span class="skill"><i class="bx bxl-git"></i> Git</span>
+              <span class="skill"><i class="bx bxl-postgresql"></i> PostgreSQL</span>
+              <span class="skill"><i class="bx bxl-firebase"></i> Firebase</span>
+              <span class="skill"><i class="bx bxl-visual-studio"></i> VS Code</span>
+              <span class="skill"><i class="bx bxl-android"></i> Android Studio</span>
+              <span class="skill"><i class="bx bx-book-content"></i> Jupyter</span>
+              <span class="skill"><i class="bx bx-edit-alt"></i> Overleaf</span>
+            </div>
+          </article>
+
+          <article class="skillcat glass reveal" style="--d: 160ms">
+            <div class="skillcat__head">
+              <div class="skillcat__icon"><i class="bx bx-chip"></i></div>
+              <h3 class="skillcat__title">Hardware &amp; IoT</h3>
+            </div>
+            <div class="skill-chips">
+              <span class="skill"><i class="bx bx-chip"></i> Arduino</span>
+              <span class="skill"><i class="bx bx-microchip"></i> Raspberry Pi</span>
+              <span class="skill"><i class="bx bx-bot"></i> VEX Robotics</span>
+              <span class="skill"><i class="bx bx-broadcast"></i> Microelectronics</span>
+              <span class="skill"><i class="bx bx-bluetooth"></i> Bluetooth / IoT</span>
+            </div>
+          </article>
         </div>
       </section>
 
       <!--===== PROJECTS =====-->
-      <section class="work section" id="work">
-        <h2 class="section-title">Projects</h2>
+      <section class="section wrap" id="projects">
+        <div class="section__head reveal">
+          <span class="eyebrow"><i class="bx bx-grid-alt"></i> Selected work</span>
+          <h2 class="section__title">Projects I've built</h2>
+          <p class="section__sub">
+            Live products, ML research, and hardware experiments — each with a
+            link so you can dig in yourself.
+          </p>
+        </div>
 
-        <div class="work__container bd-grid">
-          <!-- TritonSpend -->
-          <div class="project__card">
-            <img src="assets/img/OpenSourceLogo.webp" alt="TritonSpend" class="project__img" />
-            <div class="project__content">
-              <h3 class="project__title">TritonSpend</h3>
-              <p class="project__description">
-                Mobile-first personal finance app with interactive spending visualizations and automated transaction tracking. Built REST APIs and PostgreSQL schemas with automated triggers.
-              </p>
-              <div class="project__tech">
-                <span class="tech__badge">React Native</span>
-                <span class="tech__badge">TypeScript</span>
-                <span class="tech__badge">Node.js</span>
-                <span class="tech__badge">PostgreSQL</span>
-              </div>
-              <a href="https://github.com/CSES-Open-Source/TritonSpend" target="_blank" class="project__link">
-                View Project <i class="bx bx-right-arrow-alt"></i>
-              </a>
+        <div class="projects__grid">
+          <!-- GradeHQ -->
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #6a5cff, #4aa3ff)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">G</span>
+              <i class="bx bx-calculator card__glyph"></i>
+              <span class="card__status"><span class="live"></span> Live</span>
             </div>
-          </div>
+            <div class="card__body">
+              <h3 class="card__title">GradeHQ</h3>
+              <p class="card__desc">
+                A free, private grade calculator for college students. Add your
+                courses and grades and find out the exact score you need on
+                what's left to land the grade you want — all computed in-browser.
+              </p>
+              <div class="card__tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Tailwind</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://gradehq.vercel.app"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bx-link-external"></i> Live demo
+                </a>
+                <a
+                  href="https://github.com/yashmitb/gradecalc"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link"
+                >
+                  <i class="bx bxl-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cut -->
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #19c37d, #5ad1ff)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">C</span>
+              <i class="bx bx-camera card__glyph"></i>
+              <span class="card__status"><span class="live"></span> Live</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Cut</h3>
+              <p class="card__desc">
+                AI-powered calorie &amp; nutrition tracker. Snap a photo of your
+                meal and get an instant macro breakdown — built to make cutting
+                effortless instead of tedious.
+              </p>
+              <div class="card__tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">AI Vision</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://cut-eta.vercel.app"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bx-link-external"></i> Live demo
+                </a>
+                <a
+                  href="https://github.com/yashmitb/cut"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link"
+                >
+                  <i class="bx bxl-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- TritonSpend -->
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #4f7cff, #00d4c8)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">T</span>
+              <i class="bx bx-wallet card__glyph"></i>
+              <span class="card__status">Open Source</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">TritonSpend</h3>
+              <p class="card__desc">
+                Mobile-first personal finance app for UCSD students — budgeting,
+                expense tracking, goals, and AI insights, backed by REST APIs and
+                a PostgreSQL schema with automated triggers.
+              </p>
+              <div class="card__tags">
+                <span class="tag">React Native</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PostgreSQL</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://github.com/CSES-Open-Source/TritonSpend"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bxl-github"></i> View project
+                </a>
+              </div>
+            </div>
+          </article>
 
           <!-- Croptimization -->
-          <div class="project__card">
-            <img src="assets/img/croplogo.jpg" alt="Croptimization" class="project__img" />
-            <div class="project__content">
-              <h3 class="project__title">Croptimization</h3>
-              <p class="project__description">
-                ML-powered precision agriculture platform achieving 95% model accuracy. Analyzed 100K+ data points for crop yield forecasting and soil-based resource optimization.
-              </p>
-              <div class="project__tech">
-                <span class="tech__badge">TensorFlow</span>
-                <span class="tech__badge">Pandas</span>
-                <span class="tech__badge">Scikit-learn</span>
-                <span class="tech__badge">NumPy</span>
-              </div>
-              <a href="https://github.com/yashmitb/croptimization" target="_blank" class="project__link">
-                View Research <i class="bx bx-right-arrow-alt"></i>
-              </a>
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #34c759, #a8e063)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">C</span>
+              <i class="bx bx-leaf card__glyph"></i>
+              <span class="card__status">Research · App Store</span>
             </div>
-          </div>
+            <div class="card__body">
+              <h3 class="card__title">Croptimization</h3>
+              <p class="card__desc">
+                ML-powered precision-agriculture platform reaching 95% accuracy
+                across 100K+ weather and soil data points. The research became a
+                cross-platform app with seasonal crop calendars and yield
+                predictions, published to the App Store.
+              </p>
+              <div class="card__tags">
+                <span class="tag">TensorFlow</span>
+                <span class="tag">React Native</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">ML</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://github.com/yashmitb/Crop-Web"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bxl-github"></i> View project
+                </a>
+              </div>
+            </div>
+          </article>
 
           <!-- GestAR -->
-          <div class="project__card">
-            <img src="assets/img/gestar.png" alt="GestAR" class="project__img" />
-            <div class="project__content">
-              <h3 class="project__title">GestAR</h3>
-              <p class="project__description">
-                AR-inspired gesture and ASL recognition system with sub-100ms latency. Combines computer vision with embedded systems for real-time gesture interpretation.
-              </p>
-              <div class="project__tech">
-                <span class="tech__badge">Unity</span>
-                <span class="tech__badge">C#</span>
-                <span class="tech__badge">Arduino</span>
-                <span class="tech__badge">Raspberry Pi</span>
-              </div>
-              <a href="https://github.com/yashmitb/GestAR_MLbackend" target="_blank" class="project__link">
-                Learn More <i class="bx bx-right-arrow-alt"></i>
-              </a>
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #b06bff, #ff7eb6)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">G</span>
+              <i class="bx bx-hand-up card__glyph"></i>
+              <span class="card__status">Hardware + ML</span>
             </div>
-          </div>
+            <div class="card__body">
+              <h3 class="card__title">GestAR</h3>
+              <p class="card__desc">
+                AR-inspired gesture and ASL recognition system enabling IoT
+                control with sub-100ms latency. Combines computer vision with a
+                Bluetooth + microcontroller stack and custom 3D-printed
+                enclosures.
+              </p>
+              <div class="card__tags">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Raspberry Pi</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://github.com/yashmitb/GestAR_MLbackend"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bxl-github"></i> View project
+                </a>
+              </div>
+            </div>
+          </article>
 
-          <!-- HungerHeroes -->
-          <div class="project__card">
-            <img src="assets/img/foodtrash.jpg" alt="HungerHeroes" class="project__img" />
-            <div class="project__content">
-              <h3 class="project__title">HungerHeroes</h3>
-              <p class="project__description">
-                Web platform connecting food donors with recipients to reduce local hunger and food waste. Co-authored research on food redistribution systems.
-              </p>
-              <div class="project__tech">
-                <span class="tech__badge">JavaScript</span>
-                <span class="tech__badge">HTML/CSS</span>
-                <span class="tech__badge">Firebase</span>
-              </div>
-              
+          <!-- SmartBins AI -->
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #11998e, #38ef7d)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">S</span>
+              <i class="bx bx-recycle card__glyph"></i>
+              <span class="card__status">AI + IoT</span>
             </div>
+            <div class="card__body">
+              <h3 class="card__title">SmartBins AI</h3>
+              <p class="card__desc">
+                Smart waste bins that use AI to classify and sort trash
+                automatically — pairing an Arduino hardware build with a vision
+                model to push sustainability at the point of disposal.
+              </p>
+              <div class="card__tags">
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Python</span>
+                <span class="tag">IoT</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://github.com/yashmitb/SmartBins-AI"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bxl-github"></i> View project
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CleanPlate -->
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #ff8a3d, #ffd166)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">C</span>
+              <i class="bx bx-restaurant card__glyph"></i>
+              <span class="card__status">Sustainability</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">CleanPlate</h3>
+              <p class="card__desc">
+                A food-waste tracker for dining halls that measures and
+                visualizes what gets thrown out, giving operators the data they
+                need to cut waste at the source.
+              </p>
+              <div class="card__tags">
+                <span class="tag">Python</span>
+                <span class="tag">Data Analysis</span>
+                <span class="tag">Backend</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://github.com/yashmitb/CleanPlate-Backend"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bxl-github"></i> View project
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Crime Reporter -->
+          <article
+            class="card glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #ff5f6d, #ffc371)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">R</span>
+              <i class="bx bx-shield-quarter card__glyph"></i>
+              <span class="card__status">Civic Tech</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Reporter</h3>
+              <p class="card__desc">
+                A simple, accessible way for people to report crime in their
+                community — lowering the friction between witnessing something and
+                getting it on record.
+              </p>
+              <div class="card__tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML / CSS</span>
+                <span class="tag">Web</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://github.com/yashmitb/reporter-main"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bxl-github"></i> View project
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!--===== LEADERSHIP =====-->
+      <section class="section wrap" id="leadership">
+        <div class="section__head reveal">
+          <span class="eyebrow"><i class="bx bx-medal"></i> Beyond the code</span>
+          <h2 class="section__title">Leadership &amp; activities</h2>
+          <p class="section__sub">
+            I build teams and communities the same way I build software — with
+            ownership and measurable results.
+          </p>
+        </div>
+
+        <div class="lead__grid">
+          <article class="lead glass reveal">
+            <div class="lead__icon"><i class="bx bx-leaf"></i></div>
+            <h3 class="lead__title">Eagle Scout</h3>
+            <p class="lead__role">Boy Scouts of America</p>
+            <p class="lead__when">Aug 2021 — Present</p>
+            <ul class="lead__points">
+              <li>
+                <i class="bx bx-check"></i> Earned Scouting's highest rank through
+                years of leadership, service, and outdoor skills.
+              </li>
+              <li>
+                <i class="bx bx-check"></i> Planned and led a community service
+                project end-to-end.
+              </li>
+            </ul>
+          </article>
+
+          <article class="lead glass reveal" style="--d: 100ms">
+            <div class="lead__icon"><i class="bx bx-bot"></i></div>
+            <h3 class="lead__title">Robotics Club</h3>
+            <p class="lead__role">President</p>
+            <p class="lead__when">Aug 2023 — May 2025</p>
+            <ul class="lead__points">
+              <li>
+                <i class="bx bx-check"></i> Grew membership <b>246%</b>, interviewed
+                163, and mentored 5 teams.
+              </li>
+              <li>
+                <i class="bx bx-check"></i> Managed $10K in funds and raised
+                $12,325 through sponsorships and events.
+              </li>
+              <li>
+                <i class="bx bx-check"></i> Won the state championship and advanced
+                to the World Championship.
+              </li>
+            </ul>
+          </article>
+
+          <article class="lead glass reveal" style="--d: 200ms">
+            <div class="lead__icon"><i class="bx bx-code-curly"></i></div>
+            <h3 class="lead__title">Hackathon Club</h3>
+            <p class="lead__role">President</p>
+            <p class="lead__when">Aug 2022 — May 2025</p>
+            <ul class="lead__points">
+              <li>
+                <i class="bx bx-check"></i> Organized MountainHacks — <b>250+</b>
+                attendees and 16 sponsors.
+              </li>
+              <li>
+                <i class="bx bx-check"></i> Led STEM outreach workshops and trips,
+                raising $3K+.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!--===== CONTACT =====-->
+      <section class="section wrap" id="contact">
+        <div class="contact glass reveal">
+          <span class="eyebrow"><i class="bx bx-message-rounded-dots"></i> Contact</span>
+          <h2 style="margin-top: 1rem">
+            Let's build something <span class="grad-text">worth shipping.</span>
+          </h2>
+          <p>
+            I'm open to Summer 2026 internships and collaborations in data
+            science, ML, and full-stack. The fastest way to reach me is email —
+            I reply quickly.
+          </p>
+          <div class="contact__actions">
+            <a href="mailto:ybhaverisetti@ucsd.edu" class="btn btn--primary">
+              <i class="bx bx-envelope"></i> ybhaverisetti@ucsd.edu
+            </a>
+            <a
+              href="https://www.linkedin.com/in/yashmitb"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--ghost"
+            >
+              <i class="bx bxl-linkedin"></i> Connect on LinkedIn
+            </a>
           </div>
         </div>
       </section>
     </main>
 
     <!--===== FOOTER =====-->
-    <footer class="footer">
-      <p class="footer__title">Yashmit Bhaverisetti</p>
-      
-      <div class="footer__contact">
-        <a href="mailto:ybhaverisetti@ucsd.edu" class="footer__email">ybhaverisetti@ucsd.edu</a>
+    <footer class="footer wrap">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          Yashmit Bhaverisetti
+          <span>Data Science @ UC San Diego</span>
+        </div>
+        <div class="footer__social">
+          <a
+            href="https://www.linkedin.com/in/yashmitb"
+            target="_blank"
+            rel="noopener"
+            class="social-icon"
+            aria-label="LinkedIn"
+          ><i class="bx bxl-linkedin"></i></a>
+          <a
+            href="https://github.com/yashmitb"
+            target="_blank"
+            rel="noopener"
+            class="social-icon"
+            aria-label="GitHub"
+          ><i class="bx bxl-github"></i></a>
+          <a
+            href="https://devpost.com/yashmitb"
+            target="_blank"
+            rel="noopener"
+            class="social-icon"
+            aria-label="Devpost"
+          ><i class="bx bx-code-block"></i></a>
+          <a
+            href="https://www.instagram.com/yashmit.bhaverisetti/"
+            target="_blank"
+            rel="noopener"
+            class="social-icon"
+            aria-label="Instagram"
+          ><i class="bx bxl-instagram"></i></a>
+          <a
+            href="mailto:ybhaverisetti@ucsd.edu"
+            class="social-icon"
+            aria-label="Email"
+          ><i class="bx bx-envelope"></i></a>
+        </div>
       </div>
-
-      <div class="footer__social">
-        <a href="https://www.linkedin.com/in/yashmitb" target="_blank" class="footer__icon">
-          <i class="bx bxl-linkedin"></i>
-        </a>
-        <a href="https://github.com/yashmitb" target="_blank" class="footer__icon">
-          <i class="bx bxl-github"></i>
-        </a>
-        <a href="https://devpost.com/yashmitb" target="_blank" class="footer__icon">
-          <i class="bx bx-code-alt"></i>
-        </a>
-        <a href="https://www.instagram.com/yashmit.bhaverisetti/" target="_blank" class="footer__icon">
-          <i class="bx bxl-instagram"></i>
-        </a>
-        <a href="https://replit.com/@Yoshiii" target="_blank" class="footer__icon">
-          <i class="bx bx-code-alt"></i>
-        </a>
-      </div>
-      
-      <p class="footer__copy">&#169; 2026 Yashmit Bhaverisetti. All rights reserved</p>
+      <p class="footer__copy">
+        © <span id="year">2026</span> Yashmit Bhaverisetti — Designed &amp; built
+        with care.
+      </p>
     </footer>
 
-    <div class="the-element">
-      <h2 id="asd">Press 'Enter' To Auto-Scroll</h2>
-    </div>
-
-    <!--===== SCROLL REVEAL =====-->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
