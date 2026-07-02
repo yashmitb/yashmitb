@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Résumé — Yashmit Bhaverisetti, Data Science @ UC San Diego." />
+    <meta name="theme-color" content="#08080a" />
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <title>Résumé — Yashmit Bhaverisetti</title>
+
+    <style>
+      .resume {
+        min-height: 100svh;
+        padding: calc(var(--nav-h) + 1.5rem) 0 4rem;
+      }
+      .resume__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.8rem;
+      }
+      .resume__title {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        line-height: 1.05;
+      }
+      .resume__title span {
+        color: var(--text-soft);
+        font-weight: 500;
+        display: block;
+        font-size: 0.92rem;
+        letter-spacing: 0;
+        margin-top: 0.35rem;
+      }
+      .resume__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+      .resume__viewer {
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        padding: 0.5rem;
+      }
+      .resume__viewer iframe,
+      .resume__viewer embed {
+        width: 100%;
+        height: min(82vh, 1000px);
+        border: 0;
+        border-radius: var(--radius-lg);
+        background: #fff;
+        display: block;
+      }
+      .resume__hint {
+        margin-top: 1rem;
+        text-align: center;
+        color: var(--text-faint);
+        font-size: 0.85rem;
+      }
+      .resume__hint a {
+        color: var(--text-soft);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      @media (max-width: 560px) {
+        .resume__actions {
+          width: 100%;
+        }
+        .resume__actions .btn {
+          flex: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="dark-theme">
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb--1"></span>
+      <span class="orb orb--2"></span>
+      <span class="orb orb--3"></span>
+    </div>
+
+    <!-- Floating pill -->
+    <nav class="nav" id="nav">
+      <a href="../index.html" class="nav__logo"><span class="dot"></span>Yashmit</a>
+      <div class="nav__right">
+        <a href="../index.html" class="btn btn--ghost nav__cta">
+          <i class="bx bx-arrow-back"></i> Back to site
+        </a>
+        <a
+          href="../Yashmit_s_College_Resume.pdf"
+          download="Yashmit_Bhaverisetti_Resume.pdf"
+          class="btn btn--primary nav__cta"
+        >
+          <i class="bx bx-download"></i> Download
+        </a>
+      </div>
+    </nav>
+
+    <main class="resume wrap">
+      <div class="resume__head">
+        <h1 class="resume__title">
+          Résumé
+          <span>Yashmit Bhaverisetti — Data Science @ UC San Diego</span>
+        </h1>
+        <div class="resume__actions">
+          <a
+            href="../Yashmit_s_College_Resume.pdf"
+            download="Yashmit_Bhaverisetti_Resume.pdf"
+            class="btn btn--primary"
+          >
+            <i class="bx bx-download"></i> Download PDF
+          </a>
+          <a
+            href="../Yashmit_s_College_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="btn btn--ghost"
+          >
+            <i class="bx bx-link-external"></i> Open in new tab
+          </a>
+        </div>
+      </div>
+
+      <div class="resume__viewer glass reveal in">
+        <iframe
+          src="../Yashmit_s_College_Resume.pdf#view=FitH"
+          title="Yashmit Bhaverisetti résumé"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <p class="resume__hint">
+        Can't see the preview?
+        <a href="../Yashmit_s_College_Resume.pdf" download="Yashmit_Bhaverisetti_Resume.pdf">Download the PDF</a>
+        instead.
+      </p>
+    </main>
+
+    <script>
+      // keep theme consistent with the main site
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.body.classList.remove("dark-theme");
+          document.body.classList.add("light-theme");
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute("content", "#f4f4f5");
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>
