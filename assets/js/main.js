@@ -4,9 +4,19 @@
 (function () {
   "use strict";
 
+  /* ---------- Clean URL: drop index.html from the address bar ---------- */
+  try {
+    if (/\/index\.html$/.test(location.pathname) && window.history.replaceState) {
+      var clean = location.pathname.replace(/index\.html$/, "");
+      window.history.replaceState(null, "", clean + location.search + location.hash);
+    }
+  } catch (e) {}
+
   const prefersReduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
+
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
 
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById("year");
@@ -194,8 +204,8 @@
     });
   }
 
-  /* ---------- Draggable nav (liquid feel) ---------- */
-  if (nav && !prefersReduced) {
+  /* ---------- Draggable nav (liquid feel, desktop pointers only) ---------- */
+  if (nav && !prefersReduced && finePointer) {
     let dragging = false;
     let startX = 0;
     let startY = 0;
