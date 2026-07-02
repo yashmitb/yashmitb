@@ -46,17 +46,32 @@
       }
       .resume__viewer {
         border-radius: var(--radius-xl);
-        overflow: hidden;
-        padding: 0.5rem;
+        padding: 0.8rem;
       }
-      .resume__viewer iframe,
-      .resume__viewer embed {
+      .pdf-pages {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .pdf-page {
         width: 100%;
-        height: min(82vh, 1000px);
-        border: 0;
-        border-radius: var(--radius-lg);
-        background: #fff;
+        height: auto;
         display: block;
+        border-radius: var(--radius-md);
+        background: #fff;
+        box-shadow: var(--shadow-sm);
+      }
+      .pdf-loading {
+        padding: 4rem 1rem;
+        text-align: center;
+        color: var(--text-faint);
+        font-size: 0.9rem;
+      }
+      .pdf-fallback {
+        display: none;
+        padding: 3rem 1rem;
+        text-align: center;
+        color: var(--text-soft);
       }
       .resume__hint {
         margin-top: 1rem;
@@ -129,19 +144,72 @@
       </div>
 
       <div class="resume__viewer glass reveal in">
-        <iframe
-          src="../Yashmit_s_College_Resume.pdf#view=FitH"
-          title="Yashmit Bhaverisetti résumé"
-          loading="lazy"
-        ></iframe>
+        <div class="pdf-pages" id="pdf-pages">
+          <div class="pdf-loading" id="pdf-loading">Loading résumé…</div>
+        </div>
+        <div class="pdf-fallback" id="pdf-fallback">
+          Couldn't render the preview here.
+          <a href="../Yashmit_s_College_Resume.pdf" target="_blank" rel="noopener"
+            style="color: var(--text); text-decoration: underline">Open the PDF</a>
+          or
+          <a href="../Yashmit_s_College_Resume.pdf" download="Yashmit_Bhaverisetti_Resume.pdf"
+            style="color: var(--text); text-decoration: underline">download it</a>.
+        </div>
       </div>
-
-      <p class="resume__hint">
-        Can't see the preview?
-        <a href="../Yashmit_s_College_Resume.pdf" download="Yashmit_Bhaverisetti_Resume.pdf">Download the PDF</a>
-        instead.
-      </p>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      (function () {
+        var URL_PDF = "../Yashmit_s_College_Resume.pdf";
+        var pages = document.getElementById("pdf-pages");
+        var loading = document.getElementById("pdf-loading");
+        var fallback = document.getElementById("pdf-fallback");
+
+        function fail() {
+          if (loading) loading.remove();
+          if (fallback) fallback.style.display = "block";
+        }
+
+        if (!window.pdfjsLib) {
+          fail();
+          return;
+        }
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        pdfjsLib
+          .getDocument(URL_PDF)
+          .promise.then(function (pdf) {
+            if (loading) loading.remove();
+            var chain = Promise.resolve();
+            for (var i = 1; i <= pdf.numPages; i++) {
+              (function (n) {
+                chain = chain.then(function () {
+                  return pdf.getPage(n).then(function (page) {
+                    var base = page.getViewport({ scale: 1 });
+                    var cw = pages.clientWidth || 800;
+                    var vp = page.getViewport({ scale: (cw / base.width) * dpr });
+                    var canvas = document.createElement("canvas");
+                    canvas.className = "pdf-page";
+                    canvas.width = Math.floor(vp.width);
+                    canvas.height = Math.floor(vp.height);
+                    pages.appendChild(canvas);
+                    return page.render({
+                      canvasContext: canvas.getContext("2d"),
+                      viewport: vp,
+                    }).promise;
+                  });
+                });
+              })(i);
+            }
+            return chain;
+          })
+          .catch(fail);
+      })();
+    </script>
 
     <script>
       // keep theme consistent with the main site
