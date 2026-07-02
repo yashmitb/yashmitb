@@ -19,6 +19,11 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="preview.png" />
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="mask-icon" href="assets/favicon.svg" color="#08080a" />
+    <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -159,7 +164,7 @@
             <span class="portrait__ring"></span>
             <div class="portrait__glass">
               <img
-                src="assets/img/about_new_no_bg.png"
+                src="assets/img/about-portrait.png"
                 alt="Portrait of Yashmit Bhaverisetti"
               />
             </div>
@@ -205,8 +210,23 @@
       <!--===== ABOUT =====-->
       <section class="section wrap" id="about">
         <div class="about__grid">
-          <div class="about__photo glass reveal" data-tilt>
-            <img src="assets/img/about-portrait.png" alt="Yashmit Bhaverisetti" />
+          <div class="term glass reveal" data-tilt>
+            <div class="term__bar">
+              <span class="term__dot"></span>
+              <span class="term__dot"></span>
+              <span class="term__dot"></span>
+              <span class="term__name">yashmit.py</span>
+            </div>
+            <pre class="term__body"><code><span class="c">&gt;&gt;&gt;</span> <span class="k">from</span> yashmit <span class="k">import</span> Builder
+
+dev <span class="o">=</span> <span class="fn">Builder</span>(
+    role     <span class="o">=</span> <span class="s">"Data Scientist"</span>,
+    school   <span class="o">=</span> <span class="s">"UC San Diego"</span>,
+    focus    <span class="o">=</span> [<span class="s">"ML"</span>, <span class="s">"Data Viz"</span>],
+    shipping <span class="o">=</span> <span class="b">True</span>,
+)
+
+dev.<span class="fn">build</span>()  <span class="cm"># → ideas that ship 🚀</span><span class="cur"></span></code></pre>
           </div>
 
           <div class="reveal" style="--d: 120ms">
