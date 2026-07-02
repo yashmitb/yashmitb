@@ -775,14 +775,39 @@ body.menu-open {
 .about__photo {
   border-radius: var(--radius-xl);
   overflow: hidden;
-  padding: 1rem;
+  position: relative;
+  background: radial-gradient(
+      115% 85% at 50% 16%,
+      rgba(255, 255, 255, 0.12),
+      transparent 58%
+    ),
+    var(--cover-bg);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  will-change: transform;
+}
+/* soft floor so the cut-out figure grounds instead of floating */
+.about__photo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.28), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+body.light-theme .about__photo::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.12), transparent);
 }
 .about__photo img {
+  display: block;
   width: 100%;
-  border-radius: var(--radius-lg);
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center top;
+  position: relative;
+  z-index: 2;
 }
 
 /* About terminal card */
