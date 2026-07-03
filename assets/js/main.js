@@ -301,6 +301,9 @@
   }
 
   /* ---------- Device-orientation parallax + liquid-glass light (phones) ----
+     DISABLED for now — felt awkward. No motion-permission prompt, no tilt.
+     Left intact below (commented out) so we can revisit and refine it later.
+
      Tilt your phone and the whole hero responds with depth: the aurora
      parallaxes, the portrait rotates, glass tiles catch a moving highlight,
      and project cards glint. Touch devices only; desktop keeps the mouse
@@ -310,6 +313,7 @@
        --tx  left/right tilt   (-1 … 1)
        --ty  front/back tilt   (-1 … 1)
      CSS (gated by body.tilt-on) turns those into parallax + light. */
+  /*
   (function () {
     if (prefersReduced) return;
     const coarse = window.matchMedia("(pointer: coarse)").matches;
@@ -380,4 +384,5 @@
       start();
     }
   })();
+  */
 })();
