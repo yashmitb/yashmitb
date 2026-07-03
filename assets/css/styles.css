@@ -1557,17 +1557,28 @@ body.light-theme .about__photo::after {
     display: none;
   }
 
-  /* cleaner, scannable hero on phones */
+  /* cleaner, scannable hero on phones — key info visible on load */
   .hero {
-    padding-top: calc(var(--nav-h) + 0.5rem);
-    gap: 1.5rem;
+    padding-top: calc(var(--nav-h) + 0.25rem);
+    padding-bottom: 1.5rem;
+    gap: 1rem;
   }
   .portrait {
-    width: min(58%, 240px);
+    width: min(46%, 185px);
+  }
+  .hero__avail {
+    margin-bottom: 1rem;
+  }
+  /* "Hi, I'm Yashmit." on a single line */
+  .hero__title {
+    font-size: clamp(1.9rem, 8.6vw, 2.5rem);
+  }
+  .hero__title span {
+    display: inline;
   }
   .hero__role {
-    margin-top: 1rem;
-    font-size: 1.15rem;
+    margin-top: 0.85rem;
+    font-size: 1.05rem;
   }
   .hero__desc,
   .hero__chips {
@@ -1575,11 +1586,24 @@ body.light-theme .about__photo::after {
   }
   .hero__quick {
     display: flex;
-    gap: 0.6rem;
-    margin-top: 1.5rem;
+    gap: 0.55rem;
+    margin-top: 1.2rem;
   }
+  /* LinkedIn + Résumé share a row; View my work drops below (on scroll) */
   .hero__actions {
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
+    gap: 0.6rem;
+  }
+  .hero__actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 0.75rem;
+  }
+  .btn__pre {
+    display: none;
+  }
+  .hero__actions .hero__action-more {
+    flex: 0 0 100%;
   }
   /* hero already surfaces the key numbers on mobile — avoid repeating them */
   section[aria-label="Highlights"] {

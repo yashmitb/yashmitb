@@ -312,7 +312,7 @@
     const portrait = document.querySelector(".portrait");
     if (!portrait) return;
 
-    const MAX = 14; // degrees
+    const MAX = 18; // degrees
     let started = false;
     let base = null;
     let curX = 0,
@@ -325,8 +325,8 @@
     }
 
     function loop() {
-      curX += (tgtX - curX) * 0.12;
-      curY += (tgtY - curY) * 0.12;
+      curX += (tgtX - curX) * 0.14;
+      curY += (tgtY - curY) * 0.14;
       portrait.style.transform =
         "perspective(900px) rotateX(" +
         curX.toFixed(2) +
@@ -339,8 +339,8 @@
     function onOrient(e) {
       if (e.gamma == null || e.beta == null) return;
       if (!base) base = { g: e.gamma, b: e.beta };
-      tgtY = clamp((e.gamma - base.g) * 0.7); // left-right → rotateY
-      tgtX = clamp((base.b - e.beta) * 0.7); // front-back → rotateX
+      tgtY = clamp((e.gamma - base.g) * 0.9); // left-right → rotateY
+      tgtX = clamp((base.b - e.beta) * 0.9); // front-back → rotateX
     }
 
     function start() {
