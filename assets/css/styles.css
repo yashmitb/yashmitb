@@ -565,6 +565,37 @@ body.menu-open {
   color: var(--text-soft);
   font-size: 1.05rem;
 }
+/* mobile-only quick highlights (hidden on desktop) */
+.hero__quick {
+  display: none;
+}
+.qf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  flex: 1;
+  padding: 0.85rem 0.5rem;
+  border-radius: var(--radius-md);
+  background: var(--glass);
+  border: 1px solid var(--stroke);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.qf b {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.qf span {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1523,6 +1554,35 @@ body.light-theme .about__photo::after {
   }
   /* floating badges crowd the hero on phones — hide them */
   .portrait__badge {
+    display: none;
+  }
+
+  /* cleaner, scannable hero on phones */
+  .hero {
+    padding-top: calc(var(--nav-h) + 0.5rem);
+    gap: 1.5rem;
+  }
+  .portrait {
+    width: min(58%, 240px);
+  }
+  .hero__role {
+    margin-top: 1rem;
+    font-size: 1.15rem;
+  }
+  .hero__desc,
+  .hero__chips {
+    display: none;
+  }
+  .hero__quick {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .hero__actions {
+    margin-top: 1.5rem;
+  }
+  /* hero already surfaces the key numbers on mobile — avoid repeating them */
+  section[aria-label="Highlights"] {
     display: none;
   }
 }
