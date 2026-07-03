@@ -300,52 +300,64 @@
     });
   }
 
-  /* ---------- Device-orientation tilt for the portrait (phones) ----------
-     Tilt your phone → the hero portrait tilts with it. Touch devices only;
-     desktop keeps the mouse tilt above. iOS 13+ needs a tap to grant motion
-     access, so we request permission on the first user tap. */
+  /* ---------- Device-orientation parallax + liquid-glass light (phones) ----
+     Tilt your phone and the whole hero responds with depth: the aurora
+     parallaxes, the portrait rotates, glass tiles catch a moving highlight,
+     and project cards glint. Touch devices only; desktop keeps the mouse
+     interactions above. iOS 13+ grants motion access on the first tap.
+
+     We publish two normalized signals to the root as CSS variables:
+       --tx  left/right tilt   (-1 … 1)
+       --ty  front/back tilt   (-1 … 1)
+     CSS (gated by body.tilt-on) turns those into parallax + light. */
   (function () {
     if (prefersReduced) return;
     const coarse = window.matchMedia("(pointer: coarse)").matches;
     if (!coarse || typeof window.DeviceOrientationEvent === "undefined") return;
 
+    const root = document.documentElement;
     const portrait = document.querySelector(".portrait");
-    if (!portrait) return;
 
-    const MAX = 18; // degrees
+    const RANGE = 26; // degrees of tilt mapped to the full effect
+    const ROT = 16; // portrait max rotation in degrees
     let started = false;
     let base = null;
-    let curX = 0,
-      curY = 0,
-      tgtX = 0,
-      tgtY = 0;
+    let tgtX = 0,
+      tgtY = 0,
+      curX = 0,
+      curY = 0;
 
     function clamp(v) {
-      return Math.max(-MAX, Math.min(MAX, v));
+      return Math.max(-1, Math.min(1, v));
     }
 
     function loop() {
-      curX += (tgtX - curX) * 0.14;
-      curY += (tgtY - curY) * 0.14;
-      portrait.style.transform =
-        "perspective(900px) rotateX(" +
-        curX.toFixed(2) +
-        "deg) rotateY(" +
-        curY.toFixed(2) +
-        "deg)";
+      curX += (tgtX - curX) * 0.12;
+      curY += (tgtY - curY) * 0.12;
+      root.style.setProperty("--tx", curX.toFixed(3));
+      root.style.setProperty("--ty", curY.toFixed(3));
+      if (portrait) {
+        portrait.style.transform =
+          "perspective(900px) rotateX(" +
+          (-curY * ROT).toFixed(2) +
+          "deg) rotateY(" +
+          (curX * ROT).toFixed(2) +
+          "deg)";
+      }
       requestAnimationFrame(loop);
     }
 
     function onOrient(e) {
       if (e.gamma == null || e.beta == null) return;
       if (!base) base = { g: e.gamma, b: e.beta };
-      tgtY = clamp((e.gamma - base.g) * 0.9); // left-right → rotateY
-      tgtX = clamp((base.b - e.beta) * 0.9); // front-back → rotateX
+      tgtX = clamp((e.gamma - base.g) / RANGE); // left-right
+      tgtY = clamp((e.beta - base.b) / RANGE); // front-back
     }
 
     function start() {
       if (started) return;
       started = true;
+      document.body.classList.add("tilt-on");
       window.addEventListener("deviceorientation", onOrient);
       requestAnimationFrame(loop);
     }
