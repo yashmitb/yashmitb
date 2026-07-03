@@ -1560,10 +1560,12 @@ body.light-theme .about__photo::after {
   /* cleaner, scannable hero on phones — key info visible on load */
   .hero {
     min-height: 100svh;
-    align-content: center; /* balance the space above & below */
-    padding-top: calc(var(--nav-h) + 1rem); /* keep portrait clear of the nav */
+    /* center when there's room, but never overflow up under the nav */
+    align-content: center;
+    align-content: safe center;
+    padding-top: calc(var(--nav-h) + 1.25rem); /* keep portrait clear of the nav */
     padding-bottom: 1.75rem;
-    gap: 1rem;
+    gap: 0.9rem;
   }
   .portrait {
     width: min(46%, 185px);
