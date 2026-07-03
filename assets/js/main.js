@@ -299,4 +299,73 @@
       });
     });
   }
+
+  /* ---------- Device-orientation tilt for the portrait (phones) ----------
+     Tilt your phone → the hero portrait tilts with it. Touch devices only;
+     desktop keeps the mouse tilt above. iOS 13+ needs a tap to grant motion
+     access, so we request permission on the first user tap. */
+  (function () {
+    if (prefersReduced) return;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (!coarse || typeof window.DeviceOrientationEvent === "undefined") return;
+
+    const portrait = document.querySelector(".portrait");
+    if (!portrait) return;
+
+    const MAX = 14; // degrees
+    let started = false;
+    let base = null;
+    let curX = 0,
+      curY = 0,
+      tgtX = 0,
+      tgtY = 0;
+
+    function clamp(v) {
+      return Math.max(-MAX, Math.min(MAX, v));
+    }
+
+    function loop() {
+      curX += (tgtX - curX) * 0.12;
+      curY += (tgtY - curY) * 0.12;
+      portrait.style.transform =
+        "perspective(900px) rotateX(" +
+        curX.toFixed(2) +
+        "deg) rotateY(" +
+        curY.toFixed(2) +
+        "deg)";
+      requestAnimationFrame(loop);
+    }
+
+    function onOrient(e) {
+      if (e.gamma == null || e.beta == null) return;
+      if (!base) base = { g: e.gamma, b: e.beta };
+      tgtY = clamp((e.gamma - base.g) * 0.7); // left-right → rotateY
+      tgtX = clamp((base.b - e.beta) * 0.7); // front-back → rotateX
+    }
+
+    function start() {
+      if (started) return;
+      started = true;
+      window.addEventListener("deviceorientation", onOrient);
+      requestAnimationFrame(loop);
+    }
+
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+      // iOS 13+ — must ask from a user gesture
+      const arm = function () {
+        window.removeEventListener("touchend", arm);
+        window.removeEventListener("click", arm);
+        DeviceOrientationEvent.requestPermission()
+          .then(function (state) {
+            if (state === "granted") start();
+          })
+          .catch(function () {});
+      };
+      window.addEventListener("touchend", arm, { passive: true });
+      window.addEventListener("click", arm);
+    } else {
+      // Android / others — fires automatically in a secure context
+      start();
+    }
+  })();
 })();
