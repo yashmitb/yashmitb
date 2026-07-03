@@ -1448,31 +1448,50 @@ body.light-theme .about__photo::after {
 /* 1 — aurora parallaxes behind everything (deep layer, big move) */
 .tilt-on .bg-orbs {
   transform: translate3d(
-    calc(var(--tx) * 26px),
-    calc(var(--ty) * 26px),
+    calc(var(--tx) * 55px),
+    calc(var(--ty) * 55px),
     0
   );
+  transition: transform 0.05s linear;
 }
-/* 2 — hero copy drifts slightly the other way (foreground depth) */
+/* 2 — hero copy drifts the other way (foreground depth) */
 .tilt-on .hero__copy {
-  transform: translate3d(calc(var(--tx) * -7px), calc(var(--ty) * -7px), 0);
+  transform: translate3d(calc(var(--tx) * -14px), calc(var(--ty) * -14px), 0);
 }
-/* 3 — liquid-glass light: a highlight slides across glass tiles as you tilt */
+/* 3 — the portrait itself catches a bright specular glare that sweeps with tilt.
+   This is the focal point on load, so the effect is unmistakable. */
+.tilt-on .portrait__glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    60% 60% at calc(50% + var(--tx) * 55%) calc(38% + var(--ty) * 55%),
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.12) 35%,
+    transparent 62%
+  );
+}
+/* 4 — liquid-glass light slides across every glass tile as you tilt */
 .tilt-on .qf,
 .tilt-on .term,
 .tilt-on .skillcat,
 .tilt-on .lead {
   background-image: radial-gradient(
-    75% 75% at calc(50% + var(--tx) * 42%) calc(35% + var(--ty) * 42%),
-    rgba(255, 255, 255, 0.14),
-    transparent 60%
+    70% 70% at calc(50% + var(--tx) * 70%) calc(32% + var(--ty) * 70%),
+    rgba(255, 255, 255, 0.32),
+    rgba(255, 255, 255, 0.08) 40%,
+    transparent 66%
   );
 }
-/* 4 — project cards glint toward the light as you tilt */
+/* 5 — project cards glint toward the light as you tilt */
 .tilt-on .card::after {
   opacity: 1;
   background: radial-gradient(
-    240px circle at calc(50% + var(--tx) * 40%) calc(45% + var(--ty) * 40%),
+    260px circle at calc(50% + var(--tx) * 55%) calc(45% + var(--ty) * 55%),
     var(--glare),
     transparent 60%
   );
