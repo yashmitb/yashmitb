@@ -1559,8 +1559,10 @@ body.light-theme .about__photo::after {
 
   /* cleaner, scannable hero on phones — key info visible on load */
   .hero {
-    padding-top: calc(var(--nav-h) + 0.25rem);
-    padding-bottom: 1.5rem;
+    min-height: 100svh;
+    align-content: center; /* balance the space above & below */
+    padding-top: calc(var(--nav-h) + 1rem); /* keep portrait clear of the nav */
+    padding-bottom: 1.75rem;
     gap: 1rem;
   }
   .portrait {
