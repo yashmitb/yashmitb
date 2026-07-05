@@ -9,7 +9,7 @@
     />
     <meta name="author" content="Yashmit Bhaverisetti" />
     <meta name="theme-color" content="#06070d" />
-    <link rel="canonical" href="https://yashmitb.github.io/yashmitb/" />
+    <link rel="canonical" href="https://yashmitb.me/" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Yashmit Bhaverisetti | Data Science Portfolio" />
@@ -18,7 +18,48 @@
       content="ML systems, full-stack apps, and shipped products from a UC San Diego Data Science student."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="preview.png" />
+    <meta property="og:url" content="https://yashmitb.me/" />
+    <meta property="og:site_name" content="Yashmit Bhaverisetti" />
+    <meta property="og:image" content="https://yashmitb.me/preview.png" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yashmit Bhaverisetti | Data Science Portfolio" />
+    <meta
+      name="twitter:description"
+      content="ML systems, full-stack apps, and shipped products from a UC San Diego Data Science student."
+    />
+    <meta name="twitter:image" content="https://yashmitb.me/preview.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yashmit Bhaverisetti",
+        "url": "https://yashmitb.me/",
+        "email": "mailto:ybhaverisetti@ucsd.edu",
+        "jobTitle": "Data Science Student",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of California, San Diego"
+        },
+        "knowsAbout": [
+          "Machine Learning",
+          "Data Science",
+          "Full-Stack Development",
+          "Data Visualization"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/yashmitb",
+          "https://github.com/yashmitb",
+          "https://devpost.com/yashmitb",
+          "https://www.figma.com/@yashmit"
+        ]
+      }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -27,7 +68,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260702" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260705" />
 
     <!-- Box Icons -->
     <link
@@ -38,6 +79,7 @@
     <title>Yashmit Bhaverisetti | Data Science Portfolio</title>
   </head>
   <body class="dark-theme">
+    <a class="skip-link" href="#home">Skip to content</a>
     <!-- Atmosphere -->
     <div class="bg-orbs" aria-hidden="true">
       <span class="orb orb--1"></span>
@@ -67,6 +109,15 @@
       </ul>
 
       <div class="nav__right">
+        <button
+          class="theme-toggle palette-trigger"
+          id="palette-trigger"
+          aria-label="Open command palette"
+          title="Search & commands (⌘K)"
+        >
+          <i class="bx bx-search"></i>
+          <span class="palette-trigger__kbd" aria-hidden="true">⌘K</span>
+        </button>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
           <i class="bx bx-moon"></i>
         </button>
@@ -83,7 +134,7 @@
       <header class="hero wrap" id="home">
         <div class="hero__copy">
           <span class="eyebrow hero__avail reveal">
-            <span class="pulse"></span> Open to Summer 2026 internships
+            <span class="pulse"></span> Open to Summer 2027 internships
           </span>
 
           <h1 class="hero__title reveal" style="--d: 60ms">
@@ -879,7 +930,7 @@ dev.<span class="fn">build</span>()  <span class="cm"># → ideas that ship 🚀
             Let's build something <span class="grad-text">worth shipping.</span>
           </h2>
           <p>
-            I'm open to Summer 2026 internships and collaborations in data
+            I'm open to Summer 2027 internships and collaborations in data
             science, ML, and full-stack — and I take on freelance work too. Need
             a website, app, or any digital build? You can hire me directly on
             Fiverr. The fastest way to reach me is email; I reply quickly.
@@ -963,9 +1014,52 @@ dev.<span class="fn">build</span>()  <span class="cm"># → ideas that ship 🚀
       <p class="footer__copy">
         © <span id="year">2026</span> Yashmit Bhaverisetti — Designed &amp; built
         with care.
+        <span class="footer__hint">Press <kbd>⌘</kbd><kbd>K</kbd> to explore.</span>
       </p>
     </footer>
 
-    <script src="assets/js/main.js?v=20260702"></script>
+    <!--===== COMMAND PALETTE =====-->
+    <div class="palette" id="palette" hidden>
+      <div class="palette__scrim" id="palette-scrim"></div>
+      <div
+        class="palette__panel glass"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Command palette"
+      >
+        <div class="palette__search">
+          <i class="bx bx-search" aria-hidden="true"></i>
+          <input
+            type="text"
+            id="palette-input"
+            placeholder="Search sections, projects, actions…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search commands"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="palette-list"
+            aria-activedescendant=""
+          />
+          <button class="palette__esc" id="palette-close" aria-label="Close palette">esc</button>
+        </div>
+        <ul class="palette__list" id="palette-list" role="listbox" aria-label="Commands"></ul>
+        <div class="palette__foot" aria-hidden="true">
+          <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+          <span><kbd>↵</kbd> select</span>
+          <span><kbd>esc</kbd> close</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast for copy feedback -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Back to top -->
+    <button class="to-top" id="to-top" aria-label="Back to top">
+      <i class="bx bx-chevron-up"></i>
+    </button>
+
+    <script src="assets/js/main.js?v=20260705"></script>
   </body>
 </html>

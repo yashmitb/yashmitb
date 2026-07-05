@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#06070d" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20260705" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>404 — Yashmit Bhaverisetti</title>
+    <style>
+      .lost {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 2rem 1.25rem;
+      }
+      .lost__code {
+        font-size: clamp(5rem, 20vw, 9rem);
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        line-height: 1;
+      }
+      .lost__msg {
+        color: var(--text-soft);
+        margin: 1rem auto 2rem;
+        max-width: 40ch;
+      }
+    </style>
+  </head>
+  <body class="dark-theme">
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb--1"></span>
+      <span class="orb orb--2"></span>
+      <span class="orb orb--3"></span>
+    </div>
+    <main class="lost">
+      <div>
+        <div class="lost__code grad-text">404</div>
+        <p class="lost__msg">
+          This page left the notebook and never shipped. Let's get you back to
+          the things that did.
+        </p>
+        <a href="/" class="btn btn--primary">
+          <i class="bx bx-home-alt"></i>&nbsp;Back home
+        </a>
+      </div>
+    </main>
+    <script>
+      try {
+        var stored = localStorage.getItem("theme");
+        var light =
+          stored === "light" ||
+          (!stored && matchMedia("(prefers-color-scheme: light)").matches);
+        if (light) {
+          document.body.classList.remove("dark-theme");
+          document.body.classList.add("light-theme");
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>

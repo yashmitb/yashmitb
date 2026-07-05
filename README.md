@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://yashmitb.github.io/yashmitb/"><img src="https://img.shields.io/badge/Portfolio-Live-111111?style=for-the-badge" alt="Portfolio" /></a>
+  <a href="https://yashmitb.me/"><img src="https://img.shields.io/badge/Portfolio-Live-111111?style=for-the-badge" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/yashmitb"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="https://github.com/yashmitb"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
   <a href="https://www.fiverr.com/s/qDm1Xzg"><img src="https://img.shields.io/badge/Hire%20me%20on-Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white" alt="Fiverr" /></a>
@@ -99,7 +99,7 @@ Need a website, app, or any digital build? I take on freelance projects on Fiver
 
 ## 🧩 About This Repo
 
-Source for my personal portfolio — a minimal, monochrome "liquid glass" site built with plain **HTML, CSS, and JavaScript** (no framework, no build step). Features a draggable nav with spring physics, pointer-tracked glass glare, 3D card tilt, scroll-reveal animations, animated stat counters, and a persistent dark/light theme.
+Source for my personal portfolio — a minimal, monochrome "liquid glass" site built with plain **HTML, CSS, and JavaScript** (no framework, no build step). Features a ⌘K command palette with fuzzy search, a draggable nav with spring physics, pointer-tracked glass glare, 3D card tilt, magnetic buttons, scroll-reveal animations, animated stat counters, and a persistent dark/light theme that respects your system preference.
 
 ```
 .
@@ -109,4 +109,4 @@ Source for my personal portfolio — a minimal, monochrome "liquid glass" site b
 └── assets/img/           # images & icons
 ```
 
-Live at **[yashmitb.github.io/yashmitb](https://yashmitb.github.io/yashmitb/)**.
+Live at **[yashmitb.me](https://yashmitb.me/)**.
