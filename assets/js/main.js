@@ -42,22 +42,24 @@
   try {
     stored = localStorage.getItem("theme");
   } catch (e) {}
-  applyTheme(stored === "light" ? "light" : "dark");
+  // first visit: follow the system preference instead of forcing dark
+  const systemLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+  applyTheme(stored ? stored : systemLight ? "light" : "dark");
 
-  if (themeBtn) {
-    themeBtn.addEventListener("click", function () {
-      const next = body.classList.contains("light-theme") ? "dark" : "light";
-      applyTheme(next);
-      try {
-        localStorage.setItem("theme", next);
-      } catch (e) {}
-    });
+  function toggleTheme() {
+    const next = body.classList.contains("light-theme") ? "dark" : "light";
+    applyTheme(next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
   }
+  if (themeBtn) themeBtn.addEventListener("click", toggleTheme);
 
   /* ---------- Mobile menu ---------- */
   const burger = document.getElementById("burger");
   const navList = document.getElementById("nav-list");
   const scrim = document.getElementById("nav-scrim");
+  let closeMobileMenu = function () {};
   if (burger && navList) {
     const burgerIcon = burger.querySelector("i");
     const setMenu = function (open) {
@@ -65,6 +67,9 @@
       if (scrim) scrim.classList.toggle("show", open);
       document.body.classList.toggle("menu-open", open);
       if (burgerIcon) burgerIcon.className = open ? "bx bx-x" : "bx bx-menu";
+    };
+    closeMobileMenu = function () {
+      setMenu(false);
     };
     burger.addEventListener("click", function () {
       setMenu(!navList.classList.contains("show"));
@@ -298,6 +303,387 @@
         el.style.transform = "";
       });
     });
+  }
+
+  /* ---------- Back to top ---------- */
+  const toTop = document.getElementById("to-top");
+  if (toTop) {
+    window.addEventListener(
+      "scroll",
+      function () {
+        toTop.classList.toggle("show", (window.scrollY || 0) > 700);
+      },
+      { passive: true }
+    );
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+    });
+  }
+
+  /* ---------- Toast ---------- */
+  const toastEl = document.getElementById("toast");
+  let toastTimer = null;
+  function toast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove("show");
+    }, 2200);
+  }
+
+  function copyText(text, doneMsg) {
+    function done() {
+      toast(doneMsg);
+    }
+    // if the clipboard is unavailable, still surface the text
+    function fallback() {
+      legacyCopy(text) ? done() : toast(text);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else {
+      fallback();
+    }
+  }
+  function legacyCopy(text) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch (e) {}
+    ta.remove();
+    return ok;
+  }
+
+  /* ---------- Magnetic buttons (desktop, motion-safe) ---------- */
+  if (finePointer && !prefersReduced) {
+    document
+      .querySelectorAll(".btn, .social-icon, .to-top")
+      .forEach(function (el) {
+        el.addEventListener("pointermove", function (e) {
+          const r = el.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width / 2);
+          const dy = e.clientY - (r.top + r.height / 2);
+          el.style.translate =
+            (dx * 0.18).toFixed(1) + "px " + (dy * 0.18).toFixed(1) + "px";
+        });
+        el.addEventListener("pointerleave", function () {
+          el.style.translate = "";
+        });
+      });
+  }
+
+  /* ---------- Barrel roll easter egg ---------- */
+  function barrelRoll() {
+    if (prefersReduced) {
+      toast("Motion is reduced on this device — no rolls today 🙂");
+      return;
+    }
+    const main = document.querySelector("main");
+    if (!main || main.classList.contains("barrel-roll")) return;
+    // rotate around the center of the current viewport, not the page
+    const rect = main.getBoundingClientRect();
+    const cy = window.innerHeight / 2 - rect.top;
+    main.style.transformOrigin = "50% " + cy + "px";
+    main.classList.add("barrel-roll");
+    setTimeout(function () {
+      main.classList.remove("barrel-roll");
+      main.style.transformOrigin = "";
+    }, 1300);
+  }
+
+  /* ---------- Command palette (⌘K / Ctrl+K) ---------- */
+  const palette = document.getElementById("palette");
+  const paletteInput = document.getElementById("palette-input");
+  const paletteList = document.getElementById("palette-list");
+  const paletteTrigger = document.getElementById("palette-trigger");
+  const paletteScrim = document.getElementById("palette-scrim");
+  const paletteClose = document.getElementById("palette-close");
+
+  if (palette && paletteInput && paletteList) {
+    const EMAIL = "ybhaverisetti@ucsd.edu";
+    const COMMANDS = [
+      // sections
+      { label: "Home", type: "Section", icon: "bx-home-alt", keywords: "top start hero", go: "home" },
+      { label: "About", type: "Section", icon: "bx-user", keywords: "bio who", go: "about" },
+      { label: "Experience", type: "Section", icon: "bx-briefcase", keywords: "work jobs research roles", go: "experience" },
+      { label: "Skills", type: "Section", icon: "bx-wrench", keywords: "toolkit stack technologies languages", go: "skills" },
+      { label: "Projects", type: "Section", icon: "bx-grid-alt", keywords: "work portfolio builds", go: "projects" },
+      { label: "Leadership", type: "Section", icon: "bx-medal", keywords: "activities clubs eagle scout robotics", go: "leadership" },
+      { label: "Contact", type: "Section", icon: "bx-envelope", keywords: "reach hire touch", go: "contact" },
+      // projects
+      { label: "GradeHQ — live demo", type: "Project", icon: "bx-calculator", keywords: "grade calculator nextjs", url: "https://gradehq.vercel.app" },
+      { label: "Cut — live demo", type: "Project", icon: "bx-camera", keywords: "calorie nutrition tracker ai", url: "https://cut-eta.vercel.app" },
+      { label: "TritonSpend — code", type: "Project", icon: "bx-wallet", keywords: "finance budgeting react native", url: "https://github.com/CSES-Open-Source/TritonSpend" },
+      { label: "Croptimization — code", type: "Project", icon: "bx-leaf", keywords: "agriculture ml research tensorflow", url: "https://github.com/yashmitb/Crop-Web" },
+      { label: "GestAR — code", type: "Project", icon: "bx-hand-up", keywords: "gesture asl recognition unity arduino", url: "https://github.com/yashmitb/GestAR_MLbackend" },
+      { label: "SmartBins AI — code", type: "Project", icon: "bx-recycle", keywords: "waste trash vision iot", url: "https://github.com/yashmitb/SmartBins-AI" },
+      { label: "CleanPlate — code", type: "Project", icon: "bx-restaurant", keywords: "food waste dining", url: "https://github.com/yashmitb/CleanPlate-Backend" },
+      { label: "Reporter — code", type: "Project", icon: "bx-shield-quarter", keywords: "crime civic web", url: "https://github.com/yashmitb/reporter-main" },
+      // links
+      { label: "GitHub profile", type: "Link", icon: "bxl-github", keywords: "code repos", url: "https://github.com/yashmitb" },
+      { label: "LinkedIn", type: "Link", icon: "bxl-linkedin", keywords: "connect network", url: "https://www.linkedin.com/in/yashmitb" },
+      { label: "Devpost", type: "Link", icon: "bx-code-block", keywords: "hackathons", url: "https://devpost.com/yashmitb" },
+      { label: "Figma", type: "Link", icon: "bxl-figma", keywords: "design", url: "https://www.figma.com/@yashmit" },
+      { label: "Hire me on Fiverr", type: "Link", icon: "bx-store-alt", keywords: "freelance gig", url: "https://www.fiverr.com/s/qDm1Xzg" },
+      // actions
+      { label: "View résumé", type: "Action", icon: "bx-file", keywords: "resume cv", nav: "resume/" },
+      { label: "Download résumé PDF", type: "Action", icon: "bx-download", keywords: "resume cv pdf save", url: "Yashmit_s_College_Resume.pdf" },
+      { label: "Toggle light / dark theme", type: "Action", icon: "bx-moon", keywords: "mode appearance color scheme", run: toggleTheme },
+      {
+        label: "Copy email address",
+        type: "Action",
+        icon: "bx-copy",
+        keywords: "contact " + EMAIL,
+        run: function () {
+          copyText(EMAIL, "Email copied to clipboard ✓");
+        },
+      },
+      { label: "Send me an email", type: "Action", icon: "bx-envelope", keywords: "mail contact reach", nav: "mailto:" + EMAIL },
+      { label: "Do a barrel roll", type: "Fun", icon: "bx-refresh", keywords: "easter egg spin roll fun surprise", run: barrelRoll, keepQuery: true },
+    ];
+
+    let open = false;
+    let results = COMMANDS;
+    let active = 0;
+    let lastFocused = null;
+
+    /* accent-fold ("résumé" → "resume") keeping a map back to original indices */
+    function fold(str) {
+      const chars = [];
+      const map = [];
+      for (let i = 0; i < str.length; i++) {
+        const d = str[i].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        for (let j = 0; j < d.length; j++) {
+          chars.push(d[j]);
+          map.push(i);
+        }
+      }
+      return { text: chars.join("").toLowerCase(), map: map };
+    }
+
+    /* subsequence fuzzy match; bonuses for word starts + consecutive runs */
+    function fuzzy(query, text) {
+      const q = fold(query).text;
+      const folded = fold(text);
+      const t = folded.text;
+      let qi = 0;
+      let score = 0;
+      let streak = 0;
+      const idx = [];
+      for (let ti = 0; ti < t.length && qi < q.length; ti++) {
+        if (t[ti] === q[qi]) {
+          idx.push(folded.map[ti]);
+          streak++;
+          score += 1 + streak * 2 + (ti === 0 || t[ti - 1] === " " ? 6 : 0);
+          qi++;
+        } else {
+          streak = 0;
+        }
+      }
+      return qi === q.length ? { score: score, indices: idx } : null;
+    }
+
+    function highlight(label, indices) {
+      let out = "";
+      let set = {};
+      indices.forEach(function (i) {
+        set[i] = true;
+      });
+      for (let i = 0; i < label.length; i++) {
+        const ch = label[i]
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+        out += set[i] ? "<mark>" + ch + "</mark>" : ch;
+      }
+      return out;
+    }
+
+    function search(query) {
+      if (!query.trim()) {
+        return COMMANDS.map(function (c) {
+          return { cmd: c, indices: [] };
+        });
+      }
+      const scored = [];
+      COMMANDS.forEach(function (c) {
+        const inLabel = fuzzy(query, c.label);
+        if (inLabel) {
+          scored.push({ cmd: c, score: inLabel.score + 10, indices: inLabel.indices });
+          return;
+        }
+        const inKeys = fuzzy(query, c.keywords + " " + c.type);
+        if (inKeys) scored.push({ cmd: c, score: inKeys.score, indices: [] });
+      });
+      scored.sort(function (a, b) {
+        return b.score - a.score;
+      });
+      return scored;
+    }
+
+    function render() {
+      paletteList.innerHTML = "";
+      if (!results.length) {
+        const empty = document.createElement("li");
+        empty.className = "palette__empty";
+        empty.textContent = "No matches — try “projects”, “resume”, or “email”.";
+        paletteList.appendChild(empty);
+        paletteInput.setAttribute("aria-activedescendant", "");
+        return;
+      }
+      results.forEach(function (r, i) {
+        const li = document.createElement("li");
+        li.className = "palette__item" + (i === active ? " is-active" : "");
+        li.id = "palette-item-" + i;
+        li.setAttribute("role", "option");
+        li.setAttribute("aria-selected", i === active ? "true" : "false");
+        li.innerHTML =
+          '<i class="bx ' +
+          r.cmd.icon +
+          '" aria-hidden="true"></i><span class="label">' +
+          (r.indices.length ? highlight(r.cmd.label, r.indices) : highlight(r.cmd.label, [])) +
+          '</span><span class="type">' +
+          r.cmd.type +
+          "</span>";
+        li.addEventListener("click", function () {
+          execute(r.cmd);
+        });
+        li.addEventListener("pointermove", function () {
+          if (active !== i) {
+            active = i;
+            updateActive();
+          }
+        });
+        paletteList.appendChild(li);
+      });
+      updateActive();
+    }
+
+    function updateActive() {
+      const items = paletteList.querySelectorAll(".palette__item");
+      items.forEach(function (item, i) {
+        item.classList.toggle("is-active", i === active);
+        item.setAttribute("aria-selected", i === active ? "true" : "false");
+      });
+      const el = items[active];
+      if (el) {
+        el.scrollIntoView({ block: "nearest" });
+        paletteInput.setAttribute("aria-activedescendant", el.id);
+      }
+    }
+
+    function openPalette() {
+      if (open) return;
+      open = true;
+      lastFocused = document.activeElement;
+      closeMobileMenu();
+      palette.hidden = false;
+      document.body.classList.add("menu-open");
+      paletteInput.value = "";
+      results = search("");
+      active = 0;
+      render();
+      paletteInput.focus();
+    }
+
+    function closePalette() {
+      if (!open) return;
+      open = false;
+      palette.hidden = true;
+      document.body.classList.remove("menu-open");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    function execute(cmd) {
+      if (cmd.go) {
+        closePalette();
+        const target = document.getElementById(cmd.go);
+        if (target)
+          target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+        return;
+      }
+      if (cmd.url) {
+        closePalette();
+        window.open(cmd.url, "_blank", "noopener");
+        return;
+      }
+      if (cmd.nav) {
+        closePalette();
+        window.location.href = cmd.nav;
+        return;
+      }
+      if (cmd.run) {
+        closePalette();
+        cmd.run();
+      }
+    }
+
+    paletteInput.addEventListener("input", function () {
+      results = search(paletteInput.value);
+      active = 0;
+      render();
+    });
+
+    paletteInput.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (results.length) {
+          active = (active + 1) % results.length;
+          updateActive();
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (results.length) {
+          active = (active - 1 + results.length) % results.length;
+          updateActive();
+        }
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (results[active]) execute(results[active].cmd);
+      } else if (e.key === "Tab") {
+        // tiny focus trap: input <-> esc button
+        e.preventDefault();
+        if (paletteClose) paletteClose.focus();
+      }
+    });
+    if (paletteClose) {
+      paletteClose.addEventListener("click", closePalette);
+      paletteClose.addEventListener("keydown", function (e) {
+        if (e.key === "Tab") {
+          e.preventDefault();
+          paletteInput.focus();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        open ? closePalette() : openPalette();
+      } else if (open && e.key === "Escape") {
+        e.preventDefault();
+        closePalette();
+      }
+    });
+
+    if (paletteTrigger) {
+      paletteTrigger.addEventListener("click", openPalette);
+      // show the right modifier key for the platform
+      const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || "");
+      const kbd = paletteTrigger.querySelector(".palette-trigger__kbd");
+      if (kbd && !isMac) kbd.textContent = "Ctrl K";
+      const footKbd = document.querySelector(".footer__hint kbd");
+      if (footKbd && !isMac) footKbd.textContent = "Ctrl";
+    }
+    if (paletteScrim) paletteScrim.addEventListener("click", closePalette);
   }
 
   /* ---------- Device-orientation parallax + liquid-glass light (phones) ----
