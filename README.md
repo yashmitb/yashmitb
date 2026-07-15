@@ -41,6 +41,7 @@ Need a website, app, or any digital build? I take on freelance projects on Fiver
 
 | Project | What it is | Tech | Links |
 | :------ | :--------- | :--- | :---- |
+| **Rewisp** | An ambient, on-device memory for your Mac — screens become searchable "wisps" (text only, never pixels); ⌘⇧Space to ask anything later. | Swift / SwiftUI · Python · On-device ML | [Site](https://yashmitb.github.io/Rewisp/) · [Code](https://github.com/yashmitb/Rewisp) |
 | **GradeHQ** | A free, private grade calculator for college students — find the exact score you need on what's left to land the grade you want. | Next.js · TypeScript · Tailwind | [Live](https://gradehq.vercel.app) · [Code](https://github.com/yashmitb/gradecalc) |
 | **Cut** | AI-powered calorie & nutrition tracker — snap a photo of your meal and get an instant macro breakdown. | Next.js · TypeScript · AI Vision | [Live](https://cut-eta.vercel.app) · [Code](https://github.com/yashmitb/cut) |
 | **TritonSpend** | Mobile-first personal finance app for UCSD students — budgeting, expense tracking, goals, and AI insights. | React Native · TypeScript · Node.js · PostgreSQL | [Code](https://github.com/CSES-Open-Source/TritonSpend) |

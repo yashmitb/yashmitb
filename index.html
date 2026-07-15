@@ -68,7 +68,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260705" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260714" />
 
     <!-- Box Icons -->
     <link
@@ -163,7 +163,7 @@
           <div class="hero__quick reveal" style="--d: 260ms" aria-label="Highlights">
             <div class="qf"><b>3.7</b><span>GPA</span></div>
             <div class="qf"><b>15+</b><span>Projects</span></div>
-            <div class="qf"><b>5</b><span>Live apps</span></div>
+            <div class="qf"><b>6</b><span>Live apps</span></div>
           </div>
 
           <div class="hero__actions reveal" style="--d: 320ms">
@@ -270,10 +270,29 @@
             <div class="stat__label">ML model accuracy</div>
           </div>
           <div class="stat">
-            <div class="stat__num grad-text" data-count="5" data-suffix=" live">5 live</div>
+            <div class="stat__num grad-text" data-count="6" data-suffix=" live">6 live</div>
             <div class="stat__label">Apps in production</div>
           </div>
         </div>
+      </section>
+
+      <!--===== NOW BUILDING =====-->
+      <section class="wrap" aria-label="Currently working on">
+        <a
+          href="https://yashmitb.github.io/Rewisp/"
+          target="_blank"
+          rel="noopener"
+          class="now glass reveal"
+        >
+          <span class="now__pulse" aria-hidden="true"><span class="pulse"></span></span>
+          <span class="now__label">Currently building</span>
+          <span class="now__sep" aria-hidden="true">·</span>
+          <span class="now__body">
+            <b>Rewisp</b> — an ambient, on-device memory for your Mac.
+            <span class="now__ver">v0.8.1</span>
+          </span>
+          <i class="bx bx-right-arrow-alt now__arrow" aria-hidden="true"></i>
+        </a>
       </section>
 
       <!--===== ABOUT =====-->
@@ -477,6 +496,7 @@ dev.<span class="fn">build</span>()  <span class="cm"># → ideas that ship 🚀
               <span class="skill"><i class="bx bxl-java"></i> Java</span>
               <span class="skill"><i class="bx bxl-html5"></i> HTML / CSS</span>
               <span class="skill"><i class="bx bxl-c-plus-plus"></i> C#</span>
+              <span class="skill"><i class="bx bx-mobile-alt"></i> Swift</span>
             </div>
           </article>
 
@@ -541,6 +561,64 @@ dev.<span class="fn">build</span>()  <span class="cm"># → ideas that ship 🚀
         </div>
 
         <div class="projects__grid">
+          <!-- Rewisp -->
+          <article
+            class="card card--featured glass reveal"
+            data-tilt
+            style="--cover: linear-gradient(135deg, #ff6b9d, #6a5cff)"
+          >
+            <div class="card__cover">
+              <span class="card__mono">R</span>
+              <i class="bx bx-ghost card__glyph"></i>
+              <span class="card__status"><span class="live"></span> macOS App</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Rewisp</h3>
+              <p class="card__desc">
+                An ambient memory for your Mac. Every glimpse of your screen
+                becomes a "wisp" — its text remembered, never the pixels.
+                Screenshots are OCR'd in memory and discarded on the spot; ask
+                anything later (⌘⇧Space) and Rewisp answers instantly from
+                Apple's on-device model, escalating to Claude, ChatGPT, Gemini,
+                or local Ollama only for hard questions. Meaning-based search,
+                promise tracking, and nightly digests — fully local, Touch
+                ID-gated vault, zero paid API keys.
+              </p>
+              <div class="card__tags">
+                <span class="tag">Swift / SwiftUI</span>
+                <span class="tag">Python</span>
+                <span class="tag">On-device ML</span>
+                <span class="tag">macOS</span>
+              </div>
+              <div class="card__links">
+                <a
+                  href="https://yashmitb.github.io/Rewisp/"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link card__link--primary"
+                >
+                  <i class="bx bx-link-external"></i> View site
+                </a>
+                <a
+                  href="https://github.com/yashmitb/Rewisp"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link"
+                >
+                  <i class="bx bxl-github"></i> Code
+                </a>
+                <a
+                  href="https://github.com/yashmitb/Rewisp/releases/latest/download/Rewisp.dmg"
+                  target="_blank"
+                  rel="noopener"
+                  class="card__link"
+                >
+                  <i class="bx bx-download"></i> Download
+                </a>
+              </div>
+            </div>
+          </article>
+
           <!-- GradeHQ -->
           <article
             class="card glass reveal"
@@ -1060,6 +1138,6 @@ dev.<span class="fn">build</span>()  <span class="cm"># → ideas that ship 🚀
       <i class="bx bx-chevron-up"></i>
     </button>
 
-    <script src="assets/js/main.js?v=20260705"></script>
+    <script src="assets/js/main.js?v=20260714"></script>
   </body>
 </html>
