@@ -718,6 +718,11 @@ body.menu-open {
   right: -12%;
   animation-delay: 1s;
 }
+.portrait__badge--3 {
+  bottom: -6%;
+  left: 2%;
+  animation-delay: 2s;
+}
 @keyframes float {
   to {
     transform: translateY(-12px);
